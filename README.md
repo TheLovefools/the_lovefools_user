@@ -1,1 +1,1 @@
-# the_lovefools_user
+# lovefools-user_panel
