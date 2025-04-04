@@ -162,7 +162,7 @@ const Gallery = () => {
                             className="gallary-thumbnail"
                             onClick={() => {
                               handleOpen();
-                              setImage(i.photo);
+                              setImage(`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${i.photo}`);
                             }}
                           />
                         </Card>
@@ -191,7 +191,7 @@ const Gallery = () => {
                         <Card className="gallary-card-w">
                           <div
                             onClick={() => {
-                              setVideoObj(i);
+                              setVideoObj()`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${i.video}`;
                               handleOpen();
                             }}
                           >
@@ -264,7 +264,7 @@ const Gallery = () => {
               {video ? (
                 <ReactPlayer
                   style={{ borderRadius: "8px", position: "relative" }}
-                  url={videObj.video}
+                  url={videObj}
                   // playing
                   controls={true}
                   width="100%"
