@@ -273,8 +273,7 @@ const Events = () => {
                   <br />
                   <div className="d-flex-time">
                     <Typography className="p14">
-                      {formatDate(eventObj.date)}-
-                      {convertTimeObjectToString(eventObj.time)}
+                     {formatDate(eventObj.date)}-{eventObj.time}
                     </Typography>
                   </div>
                 </div>
