@@ -6,6 +6,7 @@ import Button from "@/components/common/Button";
 import ControllerTextField from "../common/ControllerTextField";
 import { verificationSchema } from "@/schema/BookingSchema";
 import axios from "axios";
+import { API_ENDPOINT, NEXT_PUBLIC_API_URL } from "@/utils/constant";
 
 const DateForm = ({
   setActiveTab,
@@ -32,23 +33,13 @@ const DateForm = ({
       setGenOtp(otp); // Store OTP in state
 
       const payload = {
-        phone: `+91${watch("mobile")}`,
-        message: `Lovefools booking confirmation OTP ${otp}`,
+        "mobile": `${watch("mobile")}`,
+        "otp":`${otp}`
       };
 
+
       try {
-        const data = await axios.post(
-          "https://api.wassenger.com/v1/messages",
-          payload, // Pass the payload here directly
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization:
-                "Bearer 264f0e01da7a5c177a4e06b49b434b2e3e6c8f8d345e805868b409b7d34c604ae71da9817ee9f11c", // Correct header
-            },
-          }
-        );
-        // Disable button and start timer
+        axios.post(`${NEXT_PUBLIC_API_URL}${API_ENDPOINT.WHATSAPP_OTP}`, payload)
         setIsButtonDisabled(true);
         setButtonText("Resend");
         setTimer(60); // 30 seconds timer

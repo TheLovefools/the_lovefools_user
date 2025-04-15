@@ -20,6 +20,7 @@ export const API_ENDPOINT = {
   GET_UPCOMING_EVENT: 'getUpComingEventList',
   ADD_ENQUIRY: 'addEnquiry',
   PAYMENT_AUTH: 'initiatePayment',
+  WHATSAPP_OTP: 'whatsappotp',
 };
 
 export const ERROR_MESSAGES = "This field is required";

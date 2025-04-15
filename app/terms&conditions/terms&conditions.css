@@ -1,0 +1,14 @@
+.lovefools-body .info-box {
+    margin-bottom: 30px;
+}
+.lovefools-body .info-box .common-heading-h3 {
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+.lovefools-body .info-box ul {
+    list-style: disc;
+}
+.lovefools-body .info-box ul li {
+    list-style: disc;
+    margin-left: 40px;
+}

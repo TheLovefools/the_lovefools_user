@@ -4,6 +4,7 @@ import React from "react";
 import logo from "../../assets/images/logo2.png";
 import { Facebook, Instagram, Twitter } from "@mui/icons-material";
 import { AuthContextProvider } from "@/authcontext/AuthContext";
+import { useRouter } from "next/navigation";
 
 const navItems = [
   // "Home",
@@ -14,29 +15,41 @@ const navItems = [
   "Gallery",
   "Testimonial",
   "Contact us",
+  "Privacy policy",
+  "Terms & Conditions"
 ];
 
 const Footer2 = () => {
+  const router = useRouter();
   const { id, setId, setEnquiryName } = React.useContext(AuthContextProvider);
 
   return (
     <footer className="common-footer">
       <Container className="footer-container">
-        <Grid container>
-          <Grid item xs={12} md={12}>
+        <Grid container display="flex" alignItems="center" justifyContent="center">
+          {/* <Grid item xs={12} md={12}>
             <Image src={logo} width={150} height={50} alt="Company Logo" />
-          </Grid>
-          <Grid item xs={12} md={5}>
-            <Typography>
+          </Grid> */}
+          <Grid item xs={12} md={3}>
+          <Image src={logo} width={150} height={50} alt="Company Logo" />
+            {/* <Typography>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            </Typography>
+            </Typography> */}
           </Grid>
 
-          <Grid item xs={12} md={12} lg={7}>
+          <Grid item xs={12} md={12} lg={9}>
             <div className="footer-menu">
               {navItems.map((i, index) => {
                 return (
-                  <div key={index} onClick={() => setId(i)}>
+                  <div key={index} onClick={() => {
+                    if(i === "Privacy policy"){
+                      return router.push("/privacy-policy")
+                    }else if(i === "Terms & Conditions"){
+                      return router.push("/terms&conditions")
+                    }else{
+                      return setId(i)
+                    }
+                  }}>
                     <a href={`#${id}`} >
                       {i}
                     </a>
@@ -46,7 +59,7 @@ const Footer2 = () => {
             </div>
           </Grid>
         </Grid>
-        <Divider className="common-divider" />
+        {/* <Divider className="common-divider" />
         <Grid container alignItems="center">
           <Grid item xs={12} md={5}>
             <Typography>© 2024 Lovefools. All Rights Reserved.</Typography>
@@ -59,7 +72,7 @@ const Footer2 = () => {
               <Instagram />
             </div>
           </Grid>
-        </Grid>
+        </Grid> */}
       </Container>
     </footer>
   );
