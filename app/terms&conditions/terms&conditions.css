@@ -12,3 +12,15 @@
     list-style: disc;
     margin-left: 40px;
 }
+
+.tc-section {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    background: #fff;
+}
+
+.tc-inner-card {
+    max-width: 1000px;
+    margin: auto;
+}

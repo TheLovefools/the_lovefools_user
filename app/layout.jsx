@@ -1,3 +1,4 @@
+'use client'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -8,6 +9,7 @@ import Header from "@/components/layout/index";
 import { Inter } from "next/font/google";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import Footer2 from "@/components/footer/Footer2";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -72,6 +74,7 @@ export default function RootLayout({ children }) {
         <AuthContext>
           <Header />
           {children}
+          <Footer2 />
           <ToastContainer />
         </AuthContext>
       </body>

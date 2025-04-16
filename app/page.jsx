@@ -142,7 +142,7 @@ const Page = () => {
         <Gallery />
         <Testimonial />
         <Contact />
-        <Footer2 />
+        {/* <Footer2 /> */}
       </Box>
 
       <PopupModal

@@ -2,7 +2,6 @@ import { Divider, Grid, Typography, Container } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import logo from "../../assets/images/logo2.png";
-import { Facebook, Instagram, Twitter } from "@mui/icons-material";
 import { AuthContextProvider } from "@/authcontext/AuthContext";
 import { useRouter } from "next/navigation";
 
