@@ -4,13 +4,13 @@ import './terms&conditions.css'
 const page = () => {
     return (
         <div style={{ background: '#D4BA97', minHeight: '100vh', paddingTop: '12vh' }}>
-            <div style={{ padding: 15 }}>
-            <h2 className='text-center' style={{ fontSize: 'large', fontWeight: 600 }}>Terms and Conditions for Table Reservations at LoveFools</h2>
-            <p class="p18 text-center">Welcome to LoveFools! By making a reservation on our website, you agree to the following terms and
+            <div className='about-section common-section'>
+            <h2 className='text-center common-heading-h2'>Terms and Conditions for Table Reservations at LoveFools</h2>
+            <p className="p18 text-center">Welcome to LoveFools! By making a reservation on our website, you agree to the following terms and
                 conditions regarding booking and cancellations.</p>
             <br />
-            <div class="info-box mb30">
-                <h4 class="common-heading-h3">
+            <div className="info-box mb30">
+                <h4 className="common-heading-h3">
                     1. Reservation and Payment
                 </h4>
                 <ul>
@@ -19,8 +19,8 @@ const page = () => {
                     <li>Once the booking is confirmed, you will receive a confirmation email with the reservation details.</li>
                 </ul>
             </div>
-            <div class="info-box mb30">
-                <h4 class="common-heading-h3">
+            <div className="info-box mb30">
+                <h4 className="common-heading-h3">
                     2. Cancellation and Refund Policy
                 </h4>
                 <ul>
@@ -31,8 +31,8 @@ const page = () => {
                     <li>Refunds, if applicable, will be processed within 7 business days to the original payment method.</li>
                 </ul>
             </div>
-            <div class="info-box mb30">
-                <h4 class="common-heading-h3">
+            <div className="info-box mb30">
+                <h4 className="common-heading-h3">
                     3. Changes to Reservation
                 </h4>
                 <ul>
@@ -41,8 +41,8 @@ const page = () => {
                     </li>
                 </ul>
             </div>
-            <div class="info-box mb30">
-                <h4 class="common-heading-h3">
+            <div className="info-box mb30">
+                <h4 className="common-heading-h3">
                     4. Late Arrivals
                 </h4>
                 <ul>
@@ -50,8 +50,8 @@ const page = () => {
                         guarantee availability. In such cases, the advance payment will not be refunded.</li>
                 </ul>
             </div>
-            <div class="info-box mb30">
-                <h4 class="common-heading-h3">
+            <div className="info-box mb30">
+                <h4 className="common-heading-h3">
                     5. Special Requests
                 </h4>
                 <ul>
@@ -59,8 +59,8 @@ const page = () => {
                         but we cannot guarantee fulfillment. Please inform us in advance for any special requirements.</li>
                 </ul>
             </div>
-            <div class="info-box mb30">
-                <h4 class="common-heading-h3">
+            <div className="info-box mb30">
+                <h4 className="common-heading-h3">
                     6. Right to Refuse Service
                 </h4>
                 <ul>
@@ -69,7 +69,7 @@ const page = () => {
                 </ul>
             </div>
 
-            <h4 class="common-heading-h3 text-center">
+            <h4 className="common-heading-h3 text-center">
                 <u>Thank you for choosing LoveFools! We look forward to welcoming you.</u>
             </h4>
             </div>
