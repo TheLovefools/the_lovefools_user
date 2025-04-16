@@ -3,7 +3,7 @@ import './privacy-policy.css'
 
 const page = () => {
     return (
-        <div style={{ background: '#D4BA97', minHeight: '100vh', paddingTop: '12vh' }}>
+        <div style={{ background: '#D4BA97', minHeight: '85vh', paddingTop: '10vh' }}>
             <div className='tc-section common-section'>
                 <div className="tc-inner-card">
                     <h2 className='text-center common-heading-h2'><small>Privacy Policy for Table Reservations at LoveFools</small></h2>

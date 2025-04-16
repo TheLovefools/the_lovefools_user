@@ -23,4 +23,8 @@
 .tc-inner-card {
     max-width: 1000px;
     margin: auto;
+    padding: 0 15px;
+}
+.lovefools-body .tc-section .common-heading-h2 {
+    line-height: normal;
 }
