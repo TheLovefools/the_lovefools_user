@@ -610,7 +610,7 @@
 
 .text-danger {
   color: red !important;
-  background: #000;
+  background: transparent;
   border-radius: 10px;
   padding: 5px;
 }
@@ -866,4 +866,21 @@ label.text-small {
 .tc-inner-card {
   max-width: 1000px;
   margin: auto;
+}
+
+.lovefools-body .btn-submit {
+    text-transform: capitalize;
+    border-radius: 50px;
+    background: #ed1c24;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    min-width: 133px;
+    font-size: 16px;
+    color: #ffffff !important;
+}
+
+.lovefools-body .btn-submit span{
+  color: #ffffff !important;
 }

@@ -808,7 +808,7 @@ html {
 
 .text-danger {
   color: red !important;
-  background: #000;
+  background: transparent;
   border-radius: 10px;
   padding: 5px;
 }

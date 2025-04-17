@@ -11,8 +11,10 @@ import {
 } from "@/utils/utils";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { LoadingButton } from "@mui/lab";
 
 const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
+  const [loading,setLoading] = useState(false)
   const PrevBtn = () => {
     setActiveTab(3);
   };
@@ -26,7 +28,7 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
   };
 
   const BookingConfirm = async () => {
-    
+    setLoading(true)
     try {
       const data = new FormData();
       data.append("order_id", "ord_17402892217778888");
@@ -67,9 +69,13 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
           `${NEXT_PUBLIC_API_URL}${API_ENDPOINT.ADD_RECEIPT}`,
           payload
         );
+        if(res.data){
+          setLoading(false)
+        }
         window.location.href = response.data.redict_url; // Redirect the user
       }
     } catch (error) {
+      setLoading(false)
       console.log(error);
     }
   };
@@ -158,9 +164,18 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
         <Button type="button" variant="bordered" onClick={PrevBtn}>
           Prev
         </Button>
-        <Button type="submit" onClick={BookingConfirm}>
+        <LoadingButton
+                onClick={BookingConfirm}
+                className="btn-submit"
+                loading={loading}
+                loadingPosition="start"
+                variant="contained"
+              >
+                Submit
+              </LoadingButton>
+        {/* <Button type="submit" onClick={BookingConfirm}>
           Confirm
-        </Button>
+        </Button> */}
       </div>
     </div>
   );
