@@ -114,7 +114,6 @@ const SelectMenuForm = ({
             padding: 1,
             borderRadius: 2,
             background: "#fff",
-            width: 80,
             cursor: "pointer",
           }}
         >

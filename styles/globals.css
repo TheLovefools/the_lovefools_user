@@ -767,6 +767,7 @@ html {
   .lovefools-body .google-map-col {
     order: 1;
   }
+  
 }
 @media screen and (max-width: 767px) {
   .lovefools-body .google-map-col {
@@ -918,6 +919,7 @@ label.text-small {
     top: 0;
     margin-top: 50px;
   }
+  
   .lovefools-body .about-img-wrap .about-img-base {
     top: 0;
     width: 100% !important;
@@ -947,10 +949,9 @@ label.text-small {
 .lovefools-body .grid-menu-list {
   margin-top: 15px;
 }
-.lovefools-body .grid-menu-list > .MuiBox-root {
-  min-width: 80px;
-}
+
 .lovefools-body .bg-color {
   background-color: #D4BA97 !important;
 }/*# sourceMappingURL=globals.css.map */
+
 

@@ -37,14 +37,14 @@ const Page = () => {
   return (
     <section
       className="about-section common-section overflow-auto"
-      style={{ background: "#000000", height: "100vh", overflow: "auto" }}
+      style={{ background: "#000000", height: "100vh", overflow: "hidden" }}
     >
       <Box className="booking-banner-section flex justify-center overflow-auto mb-30">
         <Box sx={{ width: "90%", border: "1px solid #fff",borderRadius:'8px' }} className="mt-36">
           <br />
           <br />
           <CustomizedSteppers activeTab={activeTab} />
-          <Container sx={{ width: "80%" }} className="mt-10">
+          <Container sx={{ width:{md:"80%"} }} className="mt-10">
             {activeTab === 0 && (
               <DateForm
                 defaultValues={defaultValues}
