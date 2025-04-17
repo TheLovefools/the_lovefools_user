@@ -82,7 +82,7 @@ const Gallery = () => {
       <Container>
         <Grid container>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <div className="info-wrap text-center">
+            <div className="info-wrap text-center sm:md-[60px] md-[40px]">
               <Typography
                 variant="h2"
                 className={`common-heading-h2 ${loading2 ? "" : "center-line"}`}

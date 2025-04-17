@@ -118,7 +118,7 @@ const SelectMenuForm = ({
             cursor: "pointer",
           }}
         >
-          <Image src={Menu1} width={60} height={""} alt="Lovefool Img" />
+          <Image src={Menu1} width={60} height={""} alt="Lovefool Img" style={{minWidth:'60px'}}/>
         </Box>
         <Box
           onClick={() => {
@@ -135,7 +135,7 @@ const SelectMenuForm = ({
             cursor: "pointer",
           }}
         >
-          <Image src={Menu2} width={60} height={""} alt="Lovefool Img" />
+          <Image src={Menu2} width={60} height={""} alt="Lovefool Img" style={{minWidth:'60px'}}/>
         </Box>
       </div>
       <div
@@ -235,6 +235,7 @@ const SelectMenuForm = ({
                       width={30}
                       height={30}
                       alt="Lovefool Img"
+                      style={{minWidth:'60px'}}
                     />
                   </Box>
                   <Box sx={{ width: "100%" }} mt={3}>

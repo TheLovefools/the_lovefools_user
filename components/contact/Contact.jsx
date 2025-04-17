@@ -243,7 +243,7 @@ const Contact = () => {
               )}
               <LoadingButton
                 onClick={handleSubmit}
-                className="btn-primary"
+                className="btn-primary sm:w-auto w-full"
                 loading={loading}
                 loadingPosition="start"
                 variant="contained"

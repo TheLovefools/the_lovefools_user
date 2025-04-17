@@ -1,5 +1,4 @@
 import React from 'react'
-import './terms&conditions.css'
 
 const page = () => {
     return (

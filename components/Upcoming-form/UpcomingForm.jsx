@@ -80,8 +80,9 @@ const UpcomingEventForm = ({
           <Divider/>
           <br />
 
-          <div className='flex justify-end space-x-4'>
+          <div className='flex justify-end space-x-4 '>
             <Button
+             className='btn-secondary'
               type='button'
               onClick={handleClose}>
               Cancel

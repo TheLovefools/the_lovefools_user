@@ -72,6 +72,11 @@ html {
   .lovefools-body .common-section {
     padding: 60px 0;
   }
+
+  .lovefools-body .common-heading-h1 {   
+    font-size: 34px;
+    line-height: normal;
+}
 }
 .lovefools-body .common-section .info-wrap {
   max-width: 706px;
@@ -948,3 +953,4 @@ label.text-small {
 .lovefools-body .bg-color {
   background-color: #D4BA97 !important;
 }/*# sourceMappingURL=globals.css.map */
+

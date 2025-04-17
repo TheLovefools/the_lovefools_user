@@ -7,13 +7,13 @@ import { useRouter } from "next/navigation";
 
 const navItems = [
   // "Home",
-  "About us",
+  // "About us",
   // "Receipt",
   // "History",
-  "Event",
-  "Gallery",
-  "Testimonial",
-  "Contact us",
+  // "Event",
+  // "Gallery",
+  // "Testimonial",
+  // "Contact us",
   "Privacy policy",
   "Terms & Conditions"
 ];
