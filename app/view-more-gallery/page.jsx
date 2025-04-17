@@ -265,7 +265,7 @@ const Gallery = () => {
                 top: "50%",
                 left: "50%",
                 transform: "translate(-50%, -50%)",
-                width: "39vw",
+                width: {md:"39vw",sm:"80%",xs:"80%"},
                 height: "60vh",
                 bgcolor: "background.paper",
                 boxShadow: 24,

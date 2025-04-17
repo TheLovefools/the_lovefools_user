@@ -150,8 +150,8 @@ const TableListForm = ({
             {/* Table Grid */}
             {watch("room") && watch("room")?.label !== "Courtyard" && (
               <div>
-                <div className="grid gap-1 mb-2 items-center justify-center text-center grid-cols-1 sm:grid-cols-2">
-                  {loading
+<div className="grid gap-1 mb-2 items-center justify-center text-center grid-cols-1 sm:grid-cols-2">
+{loading
                     ? Array.from({ length: 2 }).map((_, index) => (
                       <Box key={index} className="m-auto">
                         <Skeleton
