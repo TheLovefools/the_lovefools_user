@@ -174,7 +174,7 @@ const Gallery = () => {
           <Grid container item rowSpacing={3} spacing={3}>
             {isPhoto &&
               (currentPhotos.length > 0 ? (
-                currentPhotos.map((item,index) => (
+                currentPhotos.map((item, index) => (
                   <Grid key={index} item xs={6} sm={6} md={3} lg={3}>
                     <Card className="gallary-card-w">
                       <Image
@@ -201,7 +201,7 @@ const Gallery = () => {
 
             {isVideo &&
               (currentVideos.length > 0 ? (
-                currentVideos.map((item,index) => (
+                currentVideos.map((item, index) => (
                   <Grid key={index} item xs={6} sm={6} md={3} lg={3}>
                     <Card className="gallary-card-w">
                       <div
@@ -258,8 +258,9 @@ const Gallery = () => {
             onClose={handleClose}
             aria-labelledby="gallery-modal-title"
             aria-describedby="gallery-modal-description"
+            className="backdrop-modal"
           >
-               <Box className={Styles}>
+            <Box className={Styles}>
               <IconButton
                 onClick={handleClose}
                 style={{
@@ -284,7 +285,7 @@ const Gallery = () => {
                 />
               ) : (
                 <Image
-                src={`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${selectedImage}`}
+                  src={`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${selectedImage}`}
                   alt="Gallery"
                   style={{ borderRadius: "8px", width: "100%" }}
                   width={500}

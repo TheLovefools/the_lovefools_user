@@ -119,8 +119,8 @@ const Gallery = () => {
                 </Button>
                 <Button
                   onClick={() => {
-                    setPhoto(false);
                     setVideo(true);
+                    setPhoto(false);
                   }}
                   variant="contained"
                   className={`${
@@ -191,8 +191,8 @@ const Gallery = () => {
                         <Card className="gallary-card-w">
                           <div
                             onClick={() => {
-                              setVideoObj()`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${i.video}`;
                               handleOpen();
+                              setVideoObj(`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${i.video}`);
                             }}
                           >
                             <Button className="play-icon-btn">
