@@ -60,6 +60,9 @@ const Gallery = () => {
     }
   };
 
+  const Styles = selectedVideo ? "gallery-video" : "gallery-img";
+
+
   const getGalleryEvents = async () => {
     try {
       setLoadingCMS(true);
@@ -120,15 +123,15 @@ const Gallery = () => {
 
   return (
     <section className="common-section hover-img bg-color" id="Gallery">
+      <div className="" style={{ height: '50px' }}></div>
       <Container>
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <div className="info-wrap text-center">
               <Typography
                 variant="h2"
-                className={`common-heading-h2 ${
-                  loadingCMS ? "" : "center-line"
-                }`}
+                className={`common-heading-h2 ${loadingCMS ? "" : "center-line"
+                  }`}
               >
                 {loadingCMS ? (
                   <Skeleton
@@ -150,9 +153,8 @@ const Gallery = () => {
                 <Button
                   onClick={handleFilterPhotos}
                   variant="contained"
-                  className={`${
-                    isPhoto ? "btn-primary" : "btn-secondary !bg-white"
-                  } btn-sm`}
+                  className={`${isPhoto ? "btn-primary" : "btn-secondary !bg-white"
+                    } btn-sm`}
                   style={{ marginRight: "10px" }}
                 >
                   Photos ({imageList.length})
@@ -160,9 +162,8 @@ const Gallery = () => {
                 <Button
                   onClick={handleFilterVideos}
                   variant="contained"
-                  className={`${
-                    isVideo ? "btn-primary" : "btn-secondary !bg-white"
-                  } btn-sm`}
+                  className={`${isVideo ? "btn-primary" : "btn-secondary !bg-white"
+                    } btn-sm`}
                 >
                   Videos ({videoList.length})
                 </Button>
@@ -173,19 +174,18 @@ const Gallery = () => {
           <Grid container item rowSpacing={3} spacing={3}>
             {isPhoto &&
               (currentPhotos.length > 0 ? (
-                currentPhotos.map((item) => (
-                  <Grid key={item._id} item xs={12} sm={6} md={3} lg={3}>
-                    <Card className="gallery-card-w" style={{maxHeight:'180px'}}>
+                currentPhotos.map((item,index) => (
+                  <Grid key={index} item xs={6} sm={6} md={3} lg={3}>
+                    <Card className="gallary-card-w">
                       <Image
-                        alt={item.event_Name}
+                        alt="Lovefools"
                         src={`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${item.photo}`}
                         width={500}
                         height={500}
-                        className="gallery-thumbnail"
-                        style={{ cursor: "pointer" }}
+                        className="gallary-thumbnail"
                         onClick={() => {
-                          setSelectedImage(item.photo);
                           handleOpen();
+                          setSelectedImage(item.photo);
                         }}
                       />
                     </Card>
@@ -201,27 +201,27 @@ const Gallery = () => {
 
             {isVideo &&
               (currentVideos.length > 0 ? (
-                currentVideos.map((item) => (
-                  <Grid key={item._id} item xs={12} sm={6} md={3} lg={3}>
-                     <Card className="gallary-card-w">
-                          <div
-                            onClick={() => {
-                              setSelectedVideo(item.video);
-                              handleOpen();
-                            }}
-                          >
-                            <Button className="play-icon-btn">
-                              <PlayCircleOutlineIcon className="play-icon" />
-                            </Button>
-                            <Image
-                              alt="Lovefools"
-                              src={`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${item.photo}`}
-                              width={500}
-                              height={500}
-                              className="gallary-thumbnail"
-                            />
-                          </div>
-                        </Card>
+                currentVideos.map((item,index) => (
+                  <Grid key={index} item xs={6} sm={6} md={3} lg={3}>
+                    <Card className="gallary-card-w">
+                      <div
+                        onClick={() => {
+                          setSelectedVideo(item.video);
+                          handleOpen();
+                        }}
+                      >
+                        <Button className="play-icon-btn">
+                          <PlayCircleOutlineIcon className="play-icon" />
+                        </Button>
+                        <Image
+                          alt="Lovefools"
+                          src={`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${item.photo}`}
+                          width={500}
+                          height={500}
+                          className="gallary-thumbnail"
+                        />
+                      </div>
+                    </Card>
                   </Grid>
                 ))
               ) : (
@@ -238,18 +238,18 @@ const Gallery = () => {
             <br />
             {isPhoto && totalPagesPhoto > 1 && (
               <Pagination
-              count={totalPagesPhoto} // Set the total number of pages
-              page={currentPagePhoto} // Set the current page
-              onChange={handleChangePagePhoto} // Fetch data for the selected page
-            />
+                count={totalPagesPhoto} // Set the total number of pages
+                page={currentPagePhoto} // Set the current page
+                onChange={handleChangePagePhoto} // Fetch data for the selected page
+              />
             )}
             {isVideo && totalPagesVideo > 1 && (
-             
+
               <Pagination
-              count={totalPagesVideo}
-              page={currentPageVideo}
-              onChange={handleChangePageVideo}
-            />
+                count={totalPagesVideo}
+                page={currentPageVideo}
+                onChange={handleChangePageVideo}
+              />
             )}
           </Box>
 
@@ -259,51 +259,36 @@ const Gallery = () => {
             aria-labelledby="gallery-modal-title"
             aria-describedby="gallery-modal-description"
           >
-            <Box
-              sx={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                width: {md:"39vw",sm:"80%",xs:"80%"},
-                height: "60vh",
-                bgcolor: "background.paper",
-                boxShadow: 24,
-                p: 2,
-                overflow: "hidden",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
+               <Box className={Styles}>
               <IconButton
                 onClick={handleClose}
-                sx={{
+                style={{
                   position: "absolute",
-                  top: "10px",
-                  right: "10px",
-                  background:'#fff !important',
-                  zIndex: 1,
+                  top: 10,
+                  right: 10,
+                  zIndex: 10,
+                  backgroundColor: "#fff",
+                  color: "white",
                 }}
               >
                 <CloseIcon />
               </IconButton>
-              {selectedImage && (
-                <Image
-                  src={`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${selectedImage}`}
-                  alt="Gallery Item"
-                  layout="intrinsic"
-                  width={500}
-                  height={500}
-                  style={{ maxHeight: "100%", maxWidth: "100%" }}
-                />
-              )}
-              {selectedVideo && (
+              {selectedVideo ? (
                 <ReactPlayer
+                  style={{ borderRadius: "8px", position: "relative" }}
                   url={`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${selectedVideo}`}
-                  controls
+                  // playing
+                  controls={true}
                   width="100%"
                   height="100%"
+                />
+              ) : (
+                <Image
+                src={`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${selectedImage}`}
+                  alt="Gallery"
+                  style={{ borderRadius: "8px", width: "100%" }}
+                  width={500}
+                  height={500}
                 />
               )}
             </Box>

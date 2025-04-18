@@ -165,7 +165,7 @@ const SelectMenuForm = ({
         </Box>
       </div>
       <div
-        className="grid grid-cols-4 gap-4 md:grid-cols-4 mb-2 items-center justify-center grid-menu-list"
+        className="grid grid-cols-4 gap-1 md:grid-cols-4 mb-2 items-center justify-center grid-menu-list"
         style={{ display: "flex" }}
       >
         {MenuType.map((item, index) => {
@@ -234,7 +234,7 @@ const SelectMenuForm = ({
                       width={30}
                       height={30}
                       alt="Lovefool Img"
-                      style={{minWidth:'60px'}}
+                      style={{minWidth:'60px', width:"60px", height: "60px", borderRadius: '50%' }}
                     />
                   </Box>
                   <Box sx={{ width: "100%" }} mt={3}>

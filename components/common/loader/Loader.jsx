@@ -1,8 +1,8 @@
 import { RotatingLines } from "react-loader-spinner";
 
 // ==============================|| LOADER ||============================== //
-const Loader = ({marginTop ='50vh',background ='#fff',marginBottom, paddingTop="0", paddingBottom="0"}) => (
-  <div style={{display:'flex',alignItems:'center',justifyContent:'center',marginTop,background,marginBottom, paddingTop, paddingBottom}}>
+const Loader = ({}) => (
+  <div style={{display:'flex',alignItems:'center',justifyContent:'center', height:'100vh'}}>
     <RotatingLines
       visible={true}
       height="30"

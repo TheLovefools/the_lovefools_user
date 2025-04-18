@@ -106,13 +106,13 @@ export default function Header(props) {
           </ListItem>
         ))}
          <ListItem disablePadding>
-            <ListItemButton
+            <ListItemButton className="book-tbl-btn"
               onClick={() => {
                 router.push("/booking");
               }}
             >
             
-                <ListItemText primary="Booking" />
+                <ListItemText primary="Book Table" />
             </ListItemButton>
           </ListItem>
       </List>

@@ -35,9 +35,11 @@
       }
     }
   }
-  .activeBorder4{
+
+  .activeBorder4 {
     border: 2px solid $red !important;
   }
+
   .color-red {
     color: $red !important;
   }
@@ -838,37 +840,25 @@ label.text-small {
     }
   }
 
+  .info-box {
+    margin-bottom: 30px;
 
-}
+    .common-heading-h3 {
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
 
-.lovefools-body .info-box {
-  margin-bottom: 30px;
-}
-.lovefools-body .info-box .common-heading-h3 {
-  margin-bottom: 15px;
-  font-weight: 600;
-}
-.lovefools-body .info-box ul {
-  list-style: disc;
-}
-.lovefools-body .info-box ul li {
-  list-style: disc;
-  margin-left: 40px;
-}
+    ul {
+      list-style: disc;
 
-.tc-section {
-  position: relative;
-  overflow: hidden;
-  padding: 0;
-  background: #fff;
-}
+      li {
+        list-style: disc;
+        margin-left: 40px;
+      }
+    }
+  }
 
-.tc-inner-card {
-  max-width: 1000px;
-  margin: auto;
-}
-
-.lovefools-body .btn-submit {
+  .btn-submit {
     text-transform: capitalize;
     border-radius: 50px;
     background: #ed1c24;
@@ -879,8 +869,52 @@ label.text-small {
     min-width: 133px;
     font-size: 16px;
     color: #ffffff !important;
-}
+  }
 
-.lovefools-body .btn-submit span{
-  color: #ffffff !important;
+  .tc-section {
+    position: relative;
+    overflow: hidden;
+    padding: 60px 15px;
+    background: #fff;
+  }
+
+  .tc-inner-card {
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  .btn-submit span {
+    color: #ffffff !important;
+  }
+
+  .custom-stack {
+    @include xs {
+      scale: 0.9;
+      transform-origin: center;
+    }
+  }
+  .adj-input-box-outer form{
+    @include xs{
+      width: 100%;
+    }
+  }
+  .common-header-drawer .book-tbl-btn{
+    text-transform: capitalize;
+    border-radius: 50px;
+    background: #ed1c24;
+    letter-spacing: .2rem;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    height: 50px;
+    min-width: 100%;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    margin-top: 30px;
+  }
+  .common-header-drawer .book-tbl-btn span{
+    color: #fff;
+  }
 }

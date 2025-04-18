@@ -38,9 +38,9 @@ const DateForm = ({ setActiveTab, handleClose, defaultValues,handleOnsubmit ,set
   
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center adj-input-box-outer">
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-        <div className="container mx-auto w-[524px]">
+        <div className="container mx-auto sm:w-[524px] adj-input-box">
           <div className="grid gap-4">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
               <div className="max-w-[250px] w-full mx-auto">

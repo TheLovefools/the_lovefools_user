@@ -115,7 +115,7 @@ const Page = () => {
                   <h2 className="carousel-title common-heading-h1">
                     <span style={{ fontWeight: "600" }}>{item.event_Name}</span>
                     <br /> {item.description}
-                    <br />
+                    <div className="" style={{height: '20px'}}></div>
                     <Button
                       variant="contained"
                       className="btn-primary btn-sm"

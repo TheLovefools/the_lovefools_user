@@ -115,7 +115,7 @@ function ColorlibStepIcon(props) {
 
 export default function CustomizedSteppers({activeTab}) {
   return (
-    <Stack sx={{ width: "100%" }} spacing={4}>
+    <Stack sx={{ width: "100%" }} spacing={4} className="custom-stack">
       <Stepper
         alternativeLabel
         activeStep={activeTab}

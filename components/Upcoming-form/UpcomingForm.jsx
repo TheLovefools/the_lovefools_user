@@ -80,14 +80,14 @@ const UpcomingEventForm = ({
           <Divider/>
           <br />
 
-          <div className='flex justify-end space-x-4 '>
-            <Button
+          <div className='space-x-4 space-y-2'>
+            {/* <Button
              className='btn-secondary'
               type='button'
               onClick={handleClose}>
               Cancel
-            </Button>
-            <Button type='submit'>{defaultValues.id ? 'Update' : 'Add'}</Button>
+            </Button> */}
+            <Button type='submit' className='w-full' style={{width: '100%'}}>{defaultValues.id ? 'Update' : 'Add'}</Button>
           </div>
         </div>
       </div>

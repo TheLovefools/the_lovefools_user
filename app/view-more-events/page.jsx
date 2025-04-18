@@ -81,6 +81,7 @@ const Events = () => {
 
   return (
     <section className="events-section common-section" id="Event">
+      <div className="" style={{height: '50px'}}></div>
       <Container>
         <Grid container>
           <Grid item xs={12}>
