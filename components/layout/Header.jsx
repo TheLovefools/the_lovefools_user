@@ -92,7 +92,7 @@ export default function Header(props) {
           <ListItem key={index} disablePadding>
             <ListItemButton
               onClick={() => {
-                if (window.location.pathname === "/booking") {
+                if (window.location.pathname === "/booking" || window.location.pathname === "/view-more-gallery" || window.location.pathname === "/events" || window.location.pathname === "/privacy-policy" || window.location.pathname === "/terms&conditions") {
                   return router.push("/");
                 } else {
                   return setId(item);
@@ -153,7 +153,7 @@ export default function Header(props) {
                   <Button
                     key={index}
                     onClick={() => {
-                      if (window.location.pathname=== "/booking") {
+                      if (window.location.pathname === "/booking" || window.location.pathname === "/view-more-gallery" || window.location.pathname === "/events" || window.location.pathname === "/privacy-policy" || window.location.pathname === "/terms&conditions") {
                         
                         return router.push("/");
                       } else {

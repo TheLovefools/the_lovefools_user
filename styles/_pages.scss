@@ -918,3 +918,9 @@ label.text-small {
     color: #fff;
   }
 }
+
+@media screen and (min-width: 768px) {
+  .lovefools-body .common-header .common-nav .MuiToolbar-regular {
+      background: #D4BA97;
+  }
+}

@@ -27,6 +27,8 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
     return getMenu.label;
   };
 
+  console.log("defaultValues",defaultValues)
+
   const BookingConfirm = async () => {
     setLoading(true)
     try {
@@ -48,6 +50,9 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
           },
         }
       );
+
+
+      console.log("response",response)
 
       const payload = {
         orderId:response.data.orderId,
