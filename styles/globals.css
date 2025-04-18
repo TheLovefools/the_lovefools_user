@@ -1073,10 +1073,4 @@ label.text-small {
 }
 .lovefools-body .common-header-drawer .book-tbl-btn span {
   color: #fff;
-}
-
-@media screen and (min-width: 768px) {
-  .lovefools-body .common-header .common-nav .MuiToolbar-regular {
-    background: #D4BA97;
-  }
 }/*# sourceMappingURL=globals.css.map */
