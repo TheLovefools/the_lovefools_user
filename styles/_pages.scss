@@ -1461,7 +1461,10 @@ input::placeholder, textarea::placeholder {
   .next-prev-bttn button.btn-booking {
     min-width: 111px;
   }
-
+  .btn-disabled.next-prev-bttn button.btn-booking {
+    cursor: not-allowed !important;
+    opacity: 0.5 !important;
+  }
   .lovefools-body {
     .rooms-grid {
       padding-top: 20px;
