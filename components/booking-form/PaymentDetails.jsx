@@ -12,6 +12,7 @@ import {
 import axios from "axios";
 import { toast } from "react-toastify";
 import { LoadingButton } from "@mui/lab";
+import { ObjectId } from 'bson';
 
 const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
 
@@ -27,6 +28,7 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
   const selectedRoom = defaultValues.room
   const advanceBookingValue = menuTypeSet === "1" ? selectedQty*alaCarteMultiple : selectedPrice*setMenuMultiple
   const selectedMenuImgUrl = menuTypeSet === "1" ? "680fdbee09eb1799fb38980b-.jpg" : defaultValues.photo
+  const newUniqueId = new ObjectId().toHexString();
 
   const filterMenu = (type, list) => {
     const getMenu = findSingleSelectedValueLabelOption(
@@ -35,20 +37,22 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
     );
     return getMenu.label;
   };
-
-  console.log("defaultValues", defaultValues)
-
+  
   const BookingConfirm = async () => {
     setLoading(true)
     try {
       const data = new FormData();
-      data.append("order_id", "ord_17402892217778888");
+      data.append("order_id", newUniqueId);
+      data.append("customer_id", "customer_"+newUniqueId);
       data.append("amount", advanceBookingValue);
+      data.append("customer_email", defaultValues.price);
+      data.append("customer_phone", defaultValues.mobile);
+      data.append("first_name", "John");
+      data.append("last_name", "Doe");
       data.append("payment_page_client_id", "hdfcmaster");
       data.append("currency", "INR");
       data.append(
-        "redirect_url",
-        `https://smartgatewayuat.hdfcbank.com/payment-page/order/ordeh_e8de090420e748b3ac62db969eadd72c`
+        "redirect_url", `https://api.thelovefools.in/api/user/handlePaymentResponse`
       );
       console.log("data_1", data);      
       const response = await axios.post(
@@ -62,22 +66,24 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
       );
 
       console.log("data_2", data);  
-      console.log("response",response)
+      console.log("response", response)
 
       const payload = {
-        orderId: response.data.orderId,
-        emailId: defaultValues.email,
-        mobileNo: defaultValues.mobile,
-        receiptName: defaultValues.id,
+        orderId: response?.data ? response.data.orderId : "nores_"+newUniqueId,
+        email: defaultValues.email,
+        mobile: defaultValues.mobile,
+        receiptName: response?.data ? "receiptNo"+response.data.orderId : "receiptNores_"+newUniqueId,
         price: advanceBookingValue,
         date: formatDateForApi(defaultValues.date),
         time: convertTimeObjectToString(defaultValues.time),
-        type: defaultValues.menuType,
-        sub_type: defaultValues.subMenuType,
+        menuType: defaultValues.menuType,
+        subMenuType: defaultValues.subMenuType,
         room: defaultValues.room.value,
         table_number: defaultValues.table_number.value,
         paymentSuccess: false
       };
+
+      // email,mobile,receiptName,date,time,price,menuType,subMenuType,room,table_number
 
       console.log("data_3", payload)
   
@@ -96,6 +102,10 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
       console.log("BookingConfirm", error);
     }
   };
+
+  useEffect(()=>{
+    console.log("defaultData_1", dummyData, defaultValues);
+  }, [])
  
   return (
     <div className="">
