@@ -100,7 +100,7 @@ const SelectSetMenu = ({
                         <Image
                           alt="Lovefools"
                           src={`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${i.photo}`}
-                          className="event-img"
+                          className="event-img event-img-setmenu"
                           width={500}
                           height={500}
                         />

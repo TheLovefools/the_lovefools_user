@@ -1137,25 +1137,6 @@ input::placeholder, textarea::placeholder {
   }
 }
 
-.alacart-item-grid {
-  .alacart-item-img {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 250px;
-    overflow: hidden;
-    .event-img {
-      position: absolute;
-      top: 20px;
-      left: -10px;
-      object-fit: fill;
-    }
-  }
-  .event-body {
-    padding: 0 !important;
-  }
-}
-
 .price-bttn {
   font-style: normal;
   font-weight: 600;
@@ -1201,7 +1182,8 @@ input::placeholder, textarea::placeholder {
   .payment-selected-menu {
     font: normal normal 500 22px/150% "Inter, sans-serif";
     color: #222222;
-    text-align: left;
+    font-weight: 600;
+    text-align: center;
     margin: 20px 0;
     > em {
       font: inherit;
@@ -1277,6 +1259,62 @@ input::placeholder, textarea::placeholder {
         height: 100px;
         width: 100px;
         object-fit: cover;
+      }
+    }
+  }
+}
+
+.ala-carte-grid-items {
+  margin-bottom: 50px;
+  .event-grid {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 30px;
+    .box-item-grid {
+      flex: 0 0 calc(33% - 30px);
+    }
+    .event-card.alacart-item-grid {
+      .alacart-item-img {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 250px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        overflow: hidden;
+        .event-img {
+          position: absolute;
+          top: 20px;
+          left: -10px;
+          object-fit: fill;
+          border-radius: 0;
+          &.event-img-setmenu {
+            position: static;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+      .event-body {
+        padding: 0 !important;
+        .d-flex-time {
+        }
+        .common-heading-h3 {
+        }
+        p {
+        }
+        .read-more-btn {
+          font-size: 1rem;
+          letter-spacing: 1px;
+          text-transform: capitalize;
+          background-color: #e6e6e6;
+        }
+        .price-bttn {
+          width: auto;
+          font-size: 1.1rem;
+        }
       }
     }
   }
