@@ -36,7 +36,7 @@ yarn-error.log*
 next-env.d.ts
 .env
 
-# tempFiles
+# myTempFiles
 temp.json
 temp2.json
 temp3.json
