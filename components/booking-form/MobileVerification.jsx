@@ -15,7 +15,7 @@ const DateForm = ({
   handleOnsubmit,
 }) => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-  const [buttonText, setButtonText] = useState("Send");
+  const [buttonText, setButtonText] = useState("Send OTP");
   const [timer, setTimer] = useState(0);
   const [genOtp, setGenOtp] = useState("");
   const [showNextPrev, setShowNextPrev] = useState(false);
@@ -26,9 +26,23 @@ const DateForm = ({
     mode: "onBlur",
   });
 
-  const { handleSubmit, setValue, setError, watch } = methods;
+  const { handleSubmit, setValue, setError, watch, trigger } = methods;
 
   const sendWhatsAppMessages = async () => {
+    console.log("sendWhatsAppMessages", "clicked");
+    // if (watch("mobile").length !== 10) {
+    //   setError("mobile", {
+    //     type: "manual",
+    //     message: "Mobile number must be valid ",
+    //   })
+    // }
+
+    const isValid = await trigger(["mobile", "email"]); // validate these fields
+    if (!isValid) {
+      return
+    } else {
+      console.log("Validation passed");
+    }
     if (watch("mobile").length === 10) {
       const otp = Math.floor(100000 + Math.random() * 900000); // Generate 6-digit OTP
       setGenOtp(otp); // Store OTP in state
@@ -39,7 +53,7 @@ const DateForm = ({
       try {
         axios.post(`${NEXT_PUBLIC_API_URL}${API_ENDPOINT.WHATSAPP_OTP}`, payload)
         setIsButtonDisabled(true);
-        setButtonText("Resend");
+        setButtonText("Resend OTP");
         setTimer(60); // 30 seconds timer
         // return data;
         setShowNextPrev(true)
@@ -97,7 +111,7 @@ const DateForm = ({
                 <ControllerTextField
                   placeholder="Enter mobile no"
                   name="mobile"
-                  label="Mobile no"
+                  label="Whatsapp mobile no."
                 />
               </div>
               <div className="max-w-[250px] w-full mx-auto mobile-verification-email">
@@ -109,7 +123,7 @@ const DateForm = ({
               </div>
             </div>
             <div className="grid gap-4">
-              <div className="max-w-[250px] w-full mx-auto text-center next-prev-bttn">
+              <div className={`max-w-[250px] w-full mx-auto text-center next-prev-bttn ${isButtonDisabled ? "btn-disabled" : ""}`}>
                 <Button
                   onClick={sendWhatsAppMessages}
                   disabled={isButtonDisabled}

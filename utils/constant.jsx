@@ -1,8 +1,8 @@
 import HomePageImg from "../assets/images/banner1.png";
 
-// export const NEXT_PUBLIC_API_URL = "http://localhost:5000/api/user/";
+export const NEXT_PUBLIC_API_URL = "http://localhost:5000/api/user/";
 //export const NEXT_PUBLIC_API_URL = "https://lovefools-backend.vercel.app/api/user/";
-export const NEXT_PUBLIC_API_URL = "https://api.thelovefools.in/api/user/";
+// export const NEXT_PUBLIC_API_URL = "https://api.thelovefools.in/api/user/";
 
 
 export const API_ENDPOINT = {
