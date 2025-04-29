@@ -26,11 +26,13 @@ const Page = () => {
 
   const defaultValues = useRef({
     id: null,
-    date: null,
-    time: null,
-    mobile: "",
-    email: "",
-    message: "",
+    event_date: null,
+    event_time: null,
+    event_name: "",
+    event_mobile: "",
+    event_email: "",
+    event_enquiry_option: null,
+    event_description: "",
   });
 
   const getUpcomingEvent = async () => {
@@ -59,40 +61,59 @@ const Page = () => {
   }, [upcomimgEvent]);
 
   const toggleUpcomingEventFormModal = (value) => {
-    defaultValues.current = {
+    defaultValues.current = {      
       id: null,
-      date: new Date(value.date),
-      time: null,
-      mobile: "",
-      email: "",
-      message: "",
+      event_date: new Date(value?.date ? value?.date : ""),
+      event_time: null,
+      event_name: "",
+      event_mobile: "",
+      event_email: "",
+      event_enquiry_option: null,
+      event_description: "",
     };
     if (!value.viveBtn) {
       setShowModal((prev) => !prev);
     }
   };
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (eventData) => {
+    
     const payload = {
-      event_Name: eventName,
-      description: data.message,
-      date: data.date,
-      time: data.time,
-      event_type: "2",
-    };
+      // description: eventData.message,
+      // date: eventData.date,
+      // time: eventData.time,
+      // event_type: "2",
+      // event_mobile: eventData.mobile,
+      // event_email: eventData.email,
+      // event_enquiry_option: eventData.enquirydd,
 
+      event_Name: eventData.event_name,
+      event_Description: eventData.event_description,
+      event_Date: eventData.event_date,
+      event_Time: eventData.event_time,
+      // event_Type: eventData.event_type.value,
+      // event_Type: eventData.event_type,
+      event_Type: "2",
+      event_Mobile: eventData.event_mobile,
+      event_Email: eventData.event_email,
+      event_Enquiry_Option: eventData.event_enquiry_option.value,
+    }
+    
+    console.log("UpcomingEventForm payload_", eventData, payload);
+    
     try {
       await axios.post(
         `${NEXT_PUBLIC_API_URL}${API_ENDPOINT.ADD_ENQUIRY}`,
         payload
       );
-
+      
+      console.log("UpcomingEventForm payload_success", payload);
       setShowModal(false);
-
       toast.success("Update Event Enquiry sent Successfully");
     } catch (error) {
-      console.log(error);
+      console.error("UpcomingEventForm error", error);
     }
+
   };
 
   return (

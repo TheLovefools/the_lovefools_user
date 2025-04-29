@@ -14,7 +14,7 @@ const page = () => {
                             1. Reservation and Payment
                         </h4>
                         <ul>
-                            <li>To secure your table reservation at LoveFools, an advance payment of ₹250 per person is required.</li>
+                            <li>To secure your table reservation at LoveFools, an advance payment of ₹500 per person is required.</li>
                             <li>The advance payment is deducted from your final bill during your visit.</li>
                             <li>Once the booking is confirmed, you will receive a confirmation email with the reservation details.</li>
                         </ul>

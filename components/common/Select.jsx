@@ -22,10 +22,14 @@ const Select = ({
       )}
       <div className={`${label && 'mt-1.5'}`}>
         <ReactSelect
+          // menuPlacement='auto'
+          // menuIsOpen={false}
+          ref={rest.inputRef}
+          value={rest.value}
+          onChange={rest.onChange}
           placeholder={placeholder}
           onInputChange={handleInputChange}
           options={options}
-          // menuPlacement='auto'
           styles={{
             menu: (provided) => ({
               ...provided,
@@ -44,6 +48,7 @@ const Select = ({
             menuPortal: (base) => ({ ...base, zIndex: 9999 }),
           }}
           // menuPosition='fixed'
+          classNamePrefix="custom-react-select"
           classNames={{
             control: (state) => {
               const defaultClassName =

@@ -106,7 +106,7 @@ function ColorlibStepIcon(props) {
   return (
     <ColorlibStepIconRoot
       ownerState={{ completed, active }}
-      className={className}
+      className={`${className} booking-step-icon`}
     >
       {icons[String(props.icon)]}
     </ColorlibStepIconRoot>

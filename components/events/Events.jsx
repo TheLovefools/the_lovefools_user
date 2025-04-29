@@ -39,6 +39,7 @@ const Events = () => {
   });
 
   const getEvent = (obj) => {
+    console.log("getEvent", obj);
     setEventObj(obj);
     handleOpen();
   };
@@ -234,6 +235,16 @@ const Events = () => {
             >
                 New Enquiry
             </Button>
+          </Grid>
+          <Grid
+            className="text-center view-more-btn-outer"
+            item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={12}
+          >
+            <p variant="text-lg" className="common-note">{`Note: For New Enquiries Click Here`}</p>
           </Grid>
         </Grid>
       </Container>

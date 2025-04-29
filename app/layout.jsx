@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <meta charset="utf-8" />
+        <meta charSet="utf-8"/>
         <title>LOVEFOOLS HOSPITALITY PRIVATE LIMITED</title>
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://thelovefools.in" />

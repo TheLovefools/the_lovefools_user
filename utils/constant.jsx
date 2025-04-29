@@ -16,6 +16,7 @@ export const API_ENDPOINT = {
   GET_MENU_LIST:'getMenuList',
   GET_ROOM_LIST:'getRoomList',
   GET_BOOK_LIST:'getBookList',
+  GET_ALACARTE_LIST:'getAlaCarteMenu',
   ADD_RECEIPT: 'addReceipt',
   GET_UPCOMING_EVENT: 'getUpComingEventList',
   ADD_ENQUIRY: 'addEnquiry',
@@ -67,5 +68,24 @@ export const AboutUsSection =
     {
       id: '2',
       type: 'Set Menu',
+    },
+  ];
+
+  export const enquiryFor = [
+    {
+      value: '0',
+      type: 'Big Event',
+    },
+    {
+      value: '1',
+      type: 'Get Together',
+    },
+    {
+      value: '2',
+      type: 'Party',
+    },
+    {
+      value: '3',
+      type: 'Other',
     },
   ];

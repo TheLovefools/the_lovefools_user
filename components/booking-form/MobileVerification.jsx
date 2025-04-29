@@ -18,6 +18,7 @@ const DateForm = ({
   const [buttonText, setButtonText] = useState("Send");
   const [timer, setTimer] = useState(0);
   const [genOtp, setGenOtp] = useState("");
+  const [showNextPrev, setShowNextPrev] = useState(false);
 
   const methods = useForm({
     resolver: yupResolver(verificationSchema),
@@ -25,29 +26,30 @@ const DateForm = ({
     mode: "onBlur",
   });
 
-  const { handleSubmit, setError, watch } = methods;
+  const { handleSubmit, setValue, setError, watch } = methods;
 
   const sendWhatsAppMessages = async () => {
     if (watch("mobile").length === 10) {
       const otp = Math.floor(100000 + Math.random() * 900000); // Generate 6-digit OTP
       setGenOtp(otp); // Store OTP in state
-
       const payload = {
         "mobile": `${watch("mobile")}`,
         "otp":`${otp}`
       };
-
-
       try {
         axios.post(`${NEXT_PUBLIC_API_URL}${API_ENDPOINT.WHATSAPP_OTP}`, payload)
         setIsButtonDisabled(true);
         setButtonText("Resend");
         setTimer(60); // 30 seconds timer
-        return data;
+        // return data;
+        setShowNextPrev(true)
+        setValue("otp", "")
+        return
       } catch (error) {
-        console.log(error);
+        setShowNextPrev(false)
+        console.log("sendWhatsAppMessages", error);
       }
-    }
+    }    
   };
 
   // Timer logic
@@ -80,20 +82,25 @@ const DateForm = ({
     setActiveTab(2);
   };
 
+  useEffect(()=>{
+    console.log("defaultValues mobile_", defaultValues);
+    
+  },[])
+
   return (
     <div className="flex items-center justify-center">
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-        <div className="container mx-auto">
+        <div className="container mx-auto mobile-verification">
           <div className="grid gap-4">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
-              <div className="max-w-[250px] w-full mx-auto">
+              <div className="max-w-[250px] w-full mx-auto mobile-verification-mobile">
                 <ControllerTextField
                   placeholder="Enter mobile no"
                   name="mobile"
                   label="Mobile no"
                 />
               </div>
-              <div className="max-w-[250px] w-full mx-auto">
+              <div className="max-w-[250px] w-full mx-auto mobile-verification-email">
                 <ControllerTextField
                   placeholder="Enter email"
                   name="email"
@@ -102,7 +109,7 @@ const DateForm = ({
               </div>
             </div>
             <div className="grid gap-4">
-              <div className="max-w-[250px] w-full mx-auto text-center">
+              <div className="max-w-[250px] w-full mx-auto text-center next-prev-bttn">
                 <Button
                   onClick={sendWhatsAppMessages}
                   disabled={isButtonDisabled}
@@ -114,7 +121,7 @@ const DateForm = ({
             </div>
             {genOtp && (
               <div className="grid grid-cols-1 gap-4 md:grid-cols-1 md:gap-6">
-                <div className="max-w-[250px] w-full mx-auto">
+                <div className="max-w-[250px] w-full mx-auto mobile-verification-otp">
                   <ControllerTextField
                     type="text"
                     placeholder="Enter otp"
@@ -126,12 +133,15 @@ const DateForm = ({
               </div>
             )}
 
-            <div className="flex justify-center space-x-4">
-              <Button type="button" variant="bordered" onClick={prevBtn}>
-                Prev
-              </Button>
-              <Button type="submit">Next</Button>
-            </div>
+            {true && (
+              <div className="flex justify-center space-x-4 next-prev-bttn">
+                <Button type="button" variant="bordered" onClick={prevBtn}>
+                  Prev
+                </Button>
+                <Button type="submit">Next</Button>
+              </div>
+            )}
+
             <br />
             <br />
           </div>

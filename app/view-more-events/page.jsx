@@ -55,6 +55,7 @@ const Events = () => {
   };
   React.useEffect(() => {
     getEvents(page);
+    console.log("eventList_", eventList, eventObj, oldEventObj);    
   }, [page]);
 
   const handlePageChange = (event, value) => {

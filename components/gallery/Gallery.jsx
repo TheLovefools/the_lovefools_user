@@ -132,7 +132,6 @@ const Gallery = () => {
               </div>
             </div>
           </Grid>
-
           <Grid container item rowSpacing={3} spacing={3}>
             {photo && loading1 ? (
               <>

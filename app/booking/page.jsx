@@ -9,6 +9,7 @@ import MobileVerificationForm from "@/components/booking-form/MobileVerification
 import PaymentDetails from "@/components/booking-form/PaymentDetails";
 import { useRazorpay, RazorpayOrderOptions } from "react-razorpay";
 import axios from "axios";
+import { calcLength } from "framer-motion";
 
 const Page = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -27,6 +28,7 @@ const Page = () => {
     subMenuType: '',
     quantity:'',
     otp: "",
+    photo: ""
   });
 
   
@@ -37,14 +39,14 @@ const Page = () => {
   return (
     <section
       className="about-section common-section overflow-auto"
-      style={{ background: "#000000", minHeight: "100vh", overflow: "hidden" }}
+      style={{ background: "#D4BA97", minHeight: "calc(100vh - 132px)", overflow: "visible" }}
     >
-      <Box className="booking-banner-section flex justify-center overflow-auto mb-30">
-        <Box sx={{ width: "90%", border: "1px solid #fff",borderRadius:'8px' }} className="mt-36">
+      <Box className="booking-banner-section flex justify-center overflow-auto pt-20 pb-10">
+        <Box sx={{ width: "90%", border: "1px solid #fff",borderRadius:'8px' }} className="mt-36 custom-stepper">
           <br />
           <br />
           <CustomizedSteppers activeTab={activeTab} />
-          <Container sx={{ width:{md:"80%"} }} className="mt-10">
+          <Container sx={{ width:{md:"90%"} }} className="mt-10 booking-form">
             {activeTab === 0 && (
               <DateForm
                 defaultValues={defaultValues}

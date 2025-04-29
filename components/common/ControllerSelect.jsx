@@ -1,6 +1,6 @@
-import React from 'react';
-import Select from './Select';
-import { useFormContext, Controller } from 'react-hook-form';
+import React from "react";
+import Select from "./Select";
+import { useFormContext, Controller } from "react-hook-form";
 
 const ControllerSelect = ({
   name,
@@ -16,7 +16,7 @@ const ControllerSelect = ({
     <Controller
       name={name}
       control={control}
-      render={({ field, fieldState: { error } }) => (
+      render={({ field: { onChange, value, ref }, fieldState: { error } }) => (
         <Select
           placeholder={placeholder}
           options={options}
@@ -24,8 +24,10 @@ const ControllerSelect = ({
           handleInputChange={handleInputChange}
           isInvalid={!!error}
           errorMessage={error?.message}
-          {...field}
-          {...rest}
+          value={value}
+          onChange={(val) => onChange(val)}
+          inputRef={ref}
+          {...rest} 
         />
       )}
     />

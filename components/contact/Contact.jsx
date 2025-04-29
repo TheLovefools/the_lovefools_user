@@ -111,6 +111,8 @@ const Contact = () => {
     }
   };
 
+  const contatNote = "For any additional requirements, please fill this form."
+
   return (
     <section className="contact-us-section common-section" id="Contact us">
       <Container>
@@ -241,6 +243,11 @@ const Contact = () => {
                   <Typography className="error">{ERROR_MESSAGES}</Typography>
                 </div>
               )}
+              {contatNote &&
+                <div>
+                  <Typography className="noteTxt"><b>Note: </b>{contatNote}</Typography>
+                </div>
+              }
               <LoadingButton
                 onClick={handleSubmit}
                 className="btn-primary sm:w-auto w-full"

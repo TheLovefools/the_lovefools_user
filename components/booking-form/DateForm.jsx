@@ -9,22 +9,25 @@ import ControllerDateTimePicker from "../common/ControllerDateTimePicker";
 import ControllerDatePicker from "../common/ControllerDatePicker";
 import { useEffect } from "react";
 
-const DateForm = ({ setActiveTab, handleClose, defaultValues,handleOnsubmit ,setDefaultValues}) => {
+const DateForm = ({ setActiveTab, handleClose, defaultValues, handleOnsubmit, setDefaultValues}) => {
   const methods = useForm({
     resolver: yupResolver(dateSchema),
     defaultValues,
     mode: "onBlur",
   });
 
-  const { handleSubmit } = methods;
+  const { handleSubmit, formState: { errors } } = methods;
 
   useEffect(() => {
     if (defaultValues.date && !(defaultValues.date instanceof Date)) {
+      const now = new Date();
       setDefaultValues((prev) => ({
         ...prev,
         date: new Date(defaultValues.date),
+        time: now.toISOString(),
       }));
     }
+    console.log("defaultValues @ DateForm", defaultValues);    
   }, [defaultValues.date]);
 
   const onSubmit = async (data) => {
@@ -35,7 +38,10 @@ const DateForm = ({ setActiveTab, handleClose, defaultValues,handleOnsubmit ,set
 
   const today = new Date();
   today.setHours(0, 0, 0, 0); // Reset time to 00:00:00
-  
+
+  useEffect(()=> {
+    console.log("errors_1", errors);    
+  }, [])  
 
   return (
     <div className="flex items-center justify-center adj-input-box-outer">
@@ -43,7 +49,7 @@ const DateForm = ({ setActiveTab, handleClose, defaultValues,handleOnsubmit ,set
         <div className="container mx-auto sm:w-[524px] adj-input-box">
           <div className="grid gap-4">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
-              <div className="max-w-[250px] w-full mx-auto">
+              <div className="max-w-[250px] w-full mx-auto mobile-width">
                 <ControllerDatePicker
                   placeholder="Enter date"
                   name="date"
@@ -51,7 +57,7 @@ const DateForm = ({ setActiveTab, handleClose, defaultValues,handleOnsubmit ,set
                   minDate={today}
                 />
               </div>
-              <div className="max-w-[250px] w-full mx-auto">
+              <div className="max-w-[250px] w-full mx-auto mobile-width">
                 <ControllerDateTimePicker
                   placeholder="Enter time"
                   name="time"
