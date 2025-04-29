@@ -40,3 +40,8 @@ next-env.d.ts
 temp.json
 temp2.json
 temp3.json
+/components/booking-form/PaymentDetails_1.jsx
+/components/booking-form/PaymentDetails-bkp.jsx
+/components/booking-form/SelectAlaCarte_bkp.jsx
+/components/booking-form/SelectMenuForm-bkp.jsx
+/components/booking-form/SelectSetMenu-bkp.jsx
