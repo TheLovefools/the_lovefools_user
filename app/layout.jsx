@@ -22,53 +22,28 @@ export default function RootLayout({ children }) {
       <head>
         <meta charSet="utf-8"/>
         <title>LOVEFOOLS HOSPITALITY PRIVATE LIMITED</title>
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://thelovefools.in" />
-        <meta
-          property="og:image"
-          content="https://the-lovefools.s3.eu-north-1.amazonaws.com/uploads/67507d2e7218dcbcba25e5ef-.jpg"
-        />
-        <meta
-          property="og:image:secure_url"
-          content="https://the-lovefools.s3.eu-north-1.amazonaws.com/uploads/67507d2e7218dcbcba25e5ef-.jpg"
-        />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="https://thelovefools.in" />
-        <meta property="og:image:type" content="image/png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:image"
-          content="https://the-lovefools.s3.eu-north-1.amazonaws.com/uploads/67507d2e7218dcbcba25e5ef-.jpg"
-        />
-        <meta
-          name="twitter:image:secure_url"
-          content="https://the-lovefools.s3.eu-north-1.amazonaws.com/uploads/67507d2e7218dcbcba25e5ef-.jpg"
-        />
-        <meta
-          property="og:title"
-          content="LOVEFOOLS HOSPITALITY PRIVATE LIMITED"
-        />
-        <meta
-          name="twitter:title"
-          content="LOVEFOOLS HOSPITALITY PRIVATE LIMITED"
-        />
-        <meta
-          name="keywords"
-          content="keywords: digital,design/development studio, ui/ux studio, ux studio,development studio,design and development studio,product design and development studio,growth hacks for startups,growth strategies in marketing"
-        />
-        <meta
-          name="description"
-          content="og:description : LOVEFOOLS HOSPITALITY PRIVATE LIMITED "
-        />
-        <meta
-          property="og:description"
-          content="og:description : LOVEFOOLS HOSPITALITY PRIVATE LIMITED "
-        />
-        <meta
-          name="twitter:description"
-          content="og:description : LOVEFOOLS HOSPITALITY PRIVATE LIMITED "
-        />
+        <meta name="keywords" content="keywords: LOVEFOOLS HOSPITALITY PRIVATE LIMITED," />
+        <meta property="og:type"content="website" />
+        <meta property="og:url"content="http://thelovefools.in" />
+        <meta property="og:image"content="https://the-lovefools.s3.eu-north-1.amazonaws.com/uploads/assets/meta-og.png" />
+        <meta property="og:image:secure_url"content="https://the-lovefools.s3.eu-north-1.amazonaws.com/uploads/assets/meta-og.png" />
+        <meta property="og:image:width"content="1200" />
+        <meta property="og:image:height"content="630" />
+        <meta property="og:image:alt"content="http://thelovefools.in" />
+        <meta property="og:image:type"content="image/png" />
+        <meta name="twitter:card"content="summary_large_image" />
+        <meta name="twitter:image"content="https://the-lovefools.s3.eu-north-1.amazonaws.com/uploads/assets/meta-og.png" />
+        <meta name="twitter:image:secure_url"content="https://the-lovefools.s3.eu-north-1.amazonaws.com/uploads/assets/meta-og.png" />
+        <meta property="og:title"content="LOVEFOOLS HOSPITALITY PRIVATE LIMITED" />
+        <meta name="twitter:title"content="LOVEFOOLS HOSPITALITY PRIVATE LIMITED" />
+        <meta name="description"content="Traditional Thali Festival - flavors from every corner of India on a single plate." />
+        <meta property="og:description"content="Traditional Thali Festival - flavors from every corner of India on a single plate." />
+        <meta name="twitter:description"content="Traditional Thali Festival - flavors from every corner of India on a single plate." />
+        <link rel="canonical"href="http://thelovefools.in"></link>
+
+
+
+        
       </head>
       <body className="lovefools-body">
         <AuthContext>
