@@ -83,7 +83,8 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
         sub_type: defaultValues.subMenuType,
         room: defaultValues.room.label,
         table_number: defaultValues.table_number.label,
-        paymentSuccess: false
+        orderStatus: "new",
+        paymentSuccess: false,
       };
 
       // email,mobile,receiptName,date,time,price,menuType,subMenuType,room,table_number
@@ -111,17 +112,18 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
 
   const payload2 = {
     orderId: resOrderId,
-    email: defaultValues.email,
-    mobile: defaultValues.mobile,
+    emailId: defaultValues.email,
+    mobileNo: defaultValues.mobile,
     receiptName: resReceiptName,
     price: advanceBookingValue,
     date: formatDateForApi(defaultValues.date),
     time: convertTimeObjectToString(defaultValues.time),
-    menuType: defaultValues.menuType,
-    subMenuType: defaultValues.subMenuType,
+    type: defaultValues.menuType,
+    sub_type: defaultValues.subMenuType,
     room: defaultValues.room.label,
     table_number: defaultValues.table_number.label,
-    paymentSuccess: false
+    orderStatus: "new",
+    paymentSuccess: false,
   };
 
   useEffect(()=>{
