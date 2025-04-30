@@ -30,6 +30,9 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
   const selectedMenuImgUrl = menuTypeSet === "1" ? "680fdbee09eb1799fb38980b-.jpg" : defaultValues.photo
   const newUniqueId = new ObjectId().toHexString();
 
+  const [resOrderId, setResOrderId] = useState("")
+  const [resReceiptName, setResReceiptName] = useState("")
+
   const filterMenu = (type, list) => {
     const getMenu = findSingleSelectedValueLabelOption(
       generateOptions(list, "id", "type"),
@@ -45,7 +48,7 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
       data.append("order_id", newUniqueId);
       data.append("customer_id", "customer_"+newUniqueId);
       data.append("amount", advanceBookingValue);
-      data.append("customer_email", defaultValues.price);
+      data.append("customer_email", defaultValues.email);
       data.append("customer_phone", defaultValues.mobile);
       data.append("first_name", "John");
       data.append("last_name", "Doe");
@@ -63,29 +66,29 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
             "Content-Type": "multipart/form-data", // Required for FormData
           },
         }
-      );
-
-      console.log("data_2", data);  
-      console.log("response", response)
+      );  
+      console.log("response_1", response)
+      setResOrderId(response?.data ? response.data.orderId : "nores_"+newUniqueId)
+      setResReceiptName(response?.data ? "receiptNo_"+response.data.orderId : "receiptNo_nores_"+newUniqueId)
 
       const payload = {
         orderId: response?.data ? response.data.orderId : "nores_"+newUniqueId,
-        email: defaultValues.email,
-        mobile: defaultValues.mobile,
-        receiptName: response?.data ? "receiptNo"+response.data.orderId : "receiptNores_"+newUniqueId,
+        emailId: defaultValues.email,
+        mobileNo: defaultValues.mobile,
+        receiptName: response?.data ? "receiptNo_"+response.data.orderId : "receiptNo_nores_"+newUniqueId,
         price: advanceBookingValue,
         date: formatDateForApi(defaultValues.date),
         time: convertTimeObjectToString(defaultValues.time),
-        menuType: defaultValues.menuType,
-        subMenuType: defaultValues.subMenuType,
-        room: defaultValues.room.value,
-        table_number: defaultValues.table_number.value,
+        type: defaultValues.menuType,
+        sub_type: defaultValues.subMenuType,
+        room: defaultValues.room.label,
+        table_number: defaultValues.table_number.label,
         paymentSuccess: false
       };
 
       // email,mobile,receiptName,date,time,price,menuType,subMenuType,room,table_number
 
-      console.log("data_3", payload)
+      console.log("payload_1", payload)
   
       if (response.data) {
        const  res = await axios.post(
@@ -95,7 +98,9 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
         if(res.data){
           setLoading(false)
         }
-        window.location.href = response.data.redict_url; // Redirect the user
+        setTimeout(() => {
+          window.location.href = response.data.redict_url; // Redirect the user          
+        }, 50000);
       }
     } catch (error) {
       setLoading(false)
@@ -103,8 +108,24 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
     }
   };
 
+
+  const payload2 = {
+    orderId: resOrderId,
+    email: defaultValues.email,
+    mobile: defaultValues.mobile,
+    receiptName: resReceiptName,
+    price: advanceBookingValue,
+    date: formatDateForApi(defaultValues.date),
+    time: convertTimeObjectToString(defaultValues.time),
+    menuType: defaultValues.menuType,
+    subMenuType: defaultValues.subMenuType,
+    room: defaultValues.room.label,
+    table_number: defaultValues.table_number.label,
+    paymentSuccess: false
+  };
+
   useEffect(()=>{
-    console.log("defaultData_1", dummyData, defaultValues);
+    console.log("defaultData_1", defaultValues, "payload_2", payload2);
   }, [])
  
   return (
