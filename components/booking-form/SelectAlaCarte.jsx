@@ -19,6 +19,7 @@ import {
 import axios from "axios";
 import { API_ENDPOINT, NEXT_PUBLIC_API_URL } from "@/utils/constant";
 import { ObjectId } from "bson";
+import Loader from "../common/loader/Loader";
 
 const SelectAlaCarte = ({ alaCarteList, defaultValues, selectMenu, ...props }) => {
   const [openModal, setOpenModal] = useState(false);
