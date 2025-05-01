@@ -1,20 +1,13 @@
-import { RotatingLines } from "react-loader-spinner";
+import React from 'react';
+// import './Loader.scss'; // or './Loader.css'
 
-// ==============================|| LOADER ||============================== //
-const Loader = ({}) => (
-  <div style={{display:'flex',alignItems:'center',justifyContent:'center', height:'100vh'}}>
-    <RotatingLines
-      visible={true}
-      height="30"
-      width="30"
-      color="grey"
-      strokeWidth="3"
-      animationDuration="0.75"
-      ariaLabel="rotating-lines-loading"
-      wrapperStyle={{}}
-      wrapperClass=""
-    />
-  </div>
-);
+const Loader = () => {
+  return (
+    <div className="loader-overlay">
+      <div className="loader-spinner"></div>
+      <div className="loader-text">Loading...</div>
+    </div>
+  );
+};
 
 export default Loader;
