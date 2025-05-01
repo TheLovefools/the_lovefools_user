@@ -16,7 +16,6 @@ import {
 import axios from "axios";
 import { API_ENDPOINT, NEXT_PUBLIC_API_URL } from "@/utils/constant";
 import { tableSchema } from "@/schema/BookingSchema";
-import Loader from "../common/loader/Loader";
 
 const TableListForm = ({
   setActiveTab,
@@ -52,7 +51,7 @@ const TableListForm = ({
       } catch (error) {
         console.error("Error fetching room list:", error);
       }
-      console.log("fetchRoomList_called");
+      console.log("fetchRoomList_called");      
     };
 
     fetchRoomList();
@@ -83,7 +82,7 @@ const TableListForm = ({
         roomID: selectedRoom,
       });
     }
-    console.log("defaultValues @ TableListForm_  ", defaultValues);
+    console.log("defaultValues @ TableListForm_  ", defaultValues); 
   }, [defaultValues?.date, defaultValues?.time, watch("room")]);
 
   // Update quantity based on table selection
@@ -154,15 +153,18 @@ const TableListForm = ({
             {watch("room") && watch("room")?.label !== "Courtyard" && (
               <div>
                 <div className="rooms-grid">
-                  {unBookTableList.length === 0 ? (
-                    <Loader
-                      marginTop="2rem"
-                      background="transparent"
-                      marginBottom="3rem"
-                    />
-                  ) : (
-                    <>
-                      {unBookTableList.map((table) => (
+                  {loading
+                    ? Array.from({ length: 2 }).map((_, index) => (
+                        <Box key={index} className="m-auto table-graphic">
+                          <Skeleton
+                            variant="rounded"
+                            width={100}
+                            height={100}
+                            sx={{ background: "#fff" }}
+                          />
+                        </Box>
+                      ))
+                    : unBookTableList.map((table) => (
                         <Box
                           className="m-auto table-graphic"
                           key={table._id}
@@ -189,8 +191,6 @@ const TableListForm = ({
                           />
                         </Box>
                       ))}
-                    </>
-                  )}
                 </div>
                 {errors.table_number && (
                   <h4 style={{ color: "red", textAlign: "center" }}>

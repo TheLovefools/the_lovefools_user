@@ -49,7 +49,7 @@ const DateForm = ({ setActiveTab, handleClose, defaultValues, handleOnsubmit, se
         <div className="container mx-auto sm:w-[524px] adj-input-box">
           <div className="grid gap-4">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
-              <div className="max-w-[250px] w-full mx-auto mobile-width">
+              <div className="w-full mx-auto mobile-width">
                 <ControllerDatePicker
                   placeholder="Enter date"
                   name="date"
@@ -57,7 +57,7 @@ const DateForm = ({ setActiveTab, handleClose, defaultValues, handleOnsubmit, se
                   minDate={today}
                 />
               </div>
-              <div className="max-w-[250px] w-full mx-auto mobile-width">
+              <div className="w-full mx-auto mobile-width date-custom">
                 <ControllerDateTimePicker
                   placeholder="Enter time"
                   name="time"

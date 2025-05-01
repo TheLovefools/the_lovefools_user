@@ -213,6 +213,7 @@ const SelectMenuForm = ({
             <>
               {menuType.Menu_Type === "1" && (
                 <SelectAlaCarte
+                  alaCarteList={alaCarteList}
                   defaultValues={defaultValues}
                   selectMenu={selectMenu}
                 />

@@ -1718,7 +1718,7 @@ input::placeholder, textarea::placeholder {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0.95);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1732,7 +1732,7 @@ input::placeholder, textarea::placeholder {
   border-radius: 50%;
   width: 70px;
   height: 70px;
-  animation: spin 1s linear infinite;
+  animation: spin 2s linear infinite;
 }
 
 .loader-text {
@@ -1744,4 +1744,18 @@ input::placeholder, textarea::placeholder {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.date-custom {
+  margin-bottom: 0;
+  .flex-col {
+    .flex-row {
+      height: 44px;
+      border-radius: 8px;
+    }
+  }
+  .mb-3 {
+    margin-bottom: 0;
+    margin-top: 3px;
+  }
 }

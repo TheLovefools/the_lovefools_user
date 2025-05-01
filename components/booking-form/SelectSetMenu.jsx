@@ -14,6 +14,7 @@ import IconButton from "@mui/material/IconButton";
 import { convertTimeObjectToString, formatDate } from "@/utils/utils";
 import axios from "axios";
 import { API_ENDPOINT, MenuType, NEXT_PUBLIC_API_URL } from "@/utils/constant";
+import Loader from "../common/loader/Loader";
 
 const SelectSetMenu = ({
   menuList,
@@ -31,13 +32,13 @@ const SelectSetMenu = ({
   const [menuType, setMenuType] = useState({
     Menu_Type: "2",
     Sub_Menu_Type: "",
-    limit: setCardLimit
+    limit: setCardLimit,
   });
 
   const getEvent = (obj) => {
-    console.log("getEvent_", obj, selectIndex );
-    setSelectIndex(obj.menu_Name)
-    selectMenu(obj)
+    console.log("getEvent_", obj, selectIndex);
+    setSelectIndex(obj.menu_Name);
+    selectMenu(obj);
   };
 
   let tempObjSetMenu = {
@@ -54,82 +55,111 @@ const SelectSetMenu = ({
 
   useEffect(() => {
     console.log("props from selectmenu comp_", defaultValues);
-    selectMenu(tempObjSetMenu)
+    selectMenu(tempObjSetMenu);
   }, []);
 
   return (
     <>
-      {/* Submenu Filter */}
-      {menuType.Menu_Type === "2" && (
-        <div className="flex justify-center gap-6 mb-4 submenu-wrapper">
-          {MenuType.map((item, index) => (
-            <Typography
-              key={index}
-              onClick={() => selectSubMenu(item)}
-              className={`submenu-item cursor-pointer ${
-                subMenu === item ? "active" : ""
-              }`}
-            >
-              {item}
-            </Typography>
-          ))}
+      {menuType.length === 0 ? (
+        <div className="text-center text-white border p-2 rounded-lg no-data">
+          No data found
         </div>
-      )}
-      <p className="note-p">Note: Please select any one option</p>
-      <div className="ala-carte-grid-items">
-        <Grid container>
-          <div
-            container
-            item
-            rowSpacing={3}
-            spacing={3}
-            className="event-grid"
-          >
-            {loading
-              ? Array.from({ length: 3 }).map((_, index) => (
-                  <Grid key={index} item xs={12} sm={12} md={4} lg={4} className={`flex items-center justify-center cursor-pointer box-item-grid`}>
-                    <Box className="event-card hover-img alacart-item-grid">
-                      <Skeleton variant="rounded" width={"33%"} height={450} />
-                    </Box>
-                  </Grid>
-                ))
-              : menuList?.map((i, index) => (
-                  <Grid key={index} item xs={12} sm={12} md={4} lg={4} className={`flex items-center justify-center cursor-pointer box-item-grid`}  onClick={() => getEvent(i)}>
-                    <Box className={`event-card hover-img alacart-item-grid ${(selectIndex ?? defaultValues.menu_Name) === i.menu_Name ? "activeBorder4" : ""}`}>
-                      <div className="alacart-item-img">
-                        <Image
-                          alt="Lovefools"
-                          src={`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${i.photo}`}
-                          className="event-img event-img-setmenu"
-                          width={500}
-                          height={500}
-                        />
-                      </div>
-                      <div className="event-body">
-                        <Typography
-                          variant="h3"
-                          className="common-heading-h3"
-                          sx={{ marginBottom: "5px !important" }}
+      ) : (
+        <>
+          {/* Submenu Filter */}
+          {menuType.length === 0 ? (
+            <Loader
+              marginTop="2rem"
+              background="transparent"
+              marginBottom="3rem"
+            />
+          ) : (
+            <>
+              {menuType.Menu_Type === "2" && (
+                <div className="flex justify-center gap-6 mb-4 submenu-wrapper">
+                  {MenuType.map((item, index) => (
+                    <Typography
+                      key={index}
+                      onClick={() => selectSubMenu(item)}
+                      className={`submenu-item cursor-pointer ${
+                        subMenu === item ? "active" : ""
+                      }`}
+                    >
+                      {item}
+                    </Typography>
+                  ))}
+                </div>
+              )}
+              <p className="note-p">Note: Please select any one option</p>
+              <div className="ala-carte-grid-items">
+                <Grid container>
+                  <div
+                    container
+                    item
+                    rowSpacing={3}
+                    spacing={3}
+                    className="event-grid"
+                  >
+                    {menuList?.map((i, index) => (
+                      <Grid
+                        key={index}
+                        item
+                        xs={12}
+                        sm={12}
+                        md={4}
+                        lg={4}
+                        className={`flex items-center justify-center cursor-pointer box-item-grid`}
+                        onClick={() => getEvent(i)}
+                      >
+                        <Box
+                          className={`event-card hover-img alacart-item-grid ${
+                            (selectIndex ?? defaultValues.menu_Name) ===
+                            i.menu_Name
+                              ? "activeBorder4"
+                              : ""
+                          }`}
                         >
-                          {i.menu_Name}
-                        </Typography>
-                        <div className="d-flex-time">
-                          <Typography className="p14">
-                            {i.description}
-                          </Typography>
-                          <Button
-                            className={`price-bttn ${(selectIndex ?? defaultValues.menu_Name) === i.menu_Name && "active"}`}
-                          >
-                            {`₹ ${i.price}`}
-                          </Button>
-                        </div>
-                      </div>
-                    </Box>
-                  </Grid>
-                ))}
-          </div>
-        </Grid>
-      </div>
+                          <div className="alacart-item-img">
+                            <Image
+                              alt="Lovefools"
+                              src={`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${i.photo}`}
+                              className="event-img event-img-setmenu"
+                              width={500}
+                              height={500}
+                            />
+                          </div>
+                          <div className="event-body">
+                            <Typography
+                              variant="h3"
+                              className="common-heading-h3"
+                              sx={{ marginBottom: "5px !important" }}
+                            >
+                              {i.menu_Name}
+                            </Typography>
+                            <div className="d-flex-time">
+                              <Typography className="p14">
+                                {i.description}
+                              </Typography>
+                              <Button
+                                className={`price-bttn ${
+                                  (selectIndex ?? defaultValues.menu_Name) ===
+                                    i.menu_Name && "active"
+                                }`}
+                              >
+                                {`₹ ${i.price}`}
+                              </Button>
+                            </div>
+                          </div>
+                        </Box>
+                      </Grid>
+                    ))}
+                  </div>
+                </Grid>
+              </div>
+            </>
+          )}
+        </>
+      )}
     </>
   );
 };
