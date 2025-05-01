@@ -18,7 +18,7 @@ const DateForm = ({
   const [buttonText, setButtonText] = useState("Send OTP");
   const [timer, setTimer] = useState(0);
   const [genOtp, setGenOtp] = useState("");
-  const [showNextPrev, setShowNextPrev] = useState(false);
+  const [showOtpError, setShowOtpError] = useState(false);
 
   const methods = useForm({
     resolver: yupResolver(verificationSchema),
@@ -50,17 +50,16 @@ const DateForm = ({
         "mobile": `${watch("mobile")}`,
         "otp":`${otp}`
       };
+      // console.log("sendWhatsAppMessages payload", payload);
       try {
         axios.post(`${NEXT_PUBLIC_API_URL}${API_ENDPOINT.WHATSAPP_OTP}`, payload)
         setIsButtonDisabled(true);
         setButtonText("Resend OTP");
         setTimer(60); // 30 seconds timer
         // return data;
-        setShowNextPrev(true)
         setValue("otp", "")
         return
       } catch (error) {
-        setShowNextPrev(false)
         console.log("sendWhatsAppMessages", error);
       }
     }    
@@ -123,7 +122,11 @@ const DateForm = ({
               </div>
             </div>
             <div className="grid gap-4">
-              <div className={`max-w-[250px] w-full mx-auto text-center next-prev-bttn ${isButtonDisabled ? "btn-disabled" : ""}`}>
+              <div
+                className={`max-w-[250px] w-full mx-auto text-center next-prev-bttn ${
+                  isButtonDisabled ? "btn-disabled" : ""
+                }`}
+              >
                 <Button
                   onClick={sendWhatsAppMessages}
                   disabled={isButtonDisabled}

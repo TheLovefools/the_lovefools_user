@@ -105,30 +105,34 @@ const Gallery = () => {
               )}
 
               <div className="filter-btn-wrap">
-                <Button
-                  onClick={() => {
-                    setPhoto(true);
-                    setVideo(false);
-                  }}
-                  variant="contained"
-                  className={`${
-                    photo ? "btn-primary" : "btn-secondary"
-                  } btn-sm`}
-                >
-                  Photo
-                </Button>
-                <Button
-                  onClick={() => {
-                    setVideo(true);
-                    setPhoto(false);
-                  }}
-                  variant="contained"
-                  className={`${
-                    video ? "btn-primary" : "btn-secondary"
-                  } btn-sm`}
-                >
-                  Video
-                </Button>
+                {imageList.length !== 0 && (
+                  <Button
+                    onClick={() => {
+                      setPhoto(true);
+                      setVideo(false);
+                    }}
+                    variant="contained"
+                    className={`${
+                      photo ? "btn-primary" : "btn-secondary"
+                    } btn-sm`}
+                  >
+                    Photo
+                  </Button>
+                )}
+                 {videoList.length !== 0 && (
+                  <Button
+                    onClick={() => {
+                      setVideo(true);
+                      setPhoto(false);
+                    }}
+                    variant="contained"
+                    className={`${
+                      video ? "btn-primary" : "btn-secondary"
+                    } btn-sm`}
+                  >
+                    Video
+                  </Button>
+                )}
               </div>
             </div>
           </Grid>

@@ -99,7 +99,7 @@ const UpcomingEventForm = ({handleUpcomingEventSubmit, handleClose, defaultValue
               placeholder='Message'
               name='event_description'
               label='Message'
-              rows={8}
+              rows={4}
             />
           </div>
           <Divider className='upcoming-form-divider col-span-2'/>

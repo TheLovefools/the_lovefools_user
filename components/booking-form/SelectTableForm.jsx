@@ -155,7 +155,7 @@ const TableListForm = ({
                 <div className="rooms-grid">
                   {loading
                     ? Array.from({ length: 2 }).map((_, index) => (
-                        <Box key={index} className="m-auto">
+                        <Box key={index} className="m-auto table-graphic">
                           <Skeleton
                             variant="rounded"
                             width={100}

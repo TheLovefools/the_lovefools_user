@@ -198,12 +198,20 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
           <div className="payment-details-block-items">
             <p className="payment-details-block-ttl">TOTAL</p>
             {menuTypeSet === "1" ? (
-              <p className="payment-details-block-value">{`₹${alaCarteMultiple} x (${selectedQty}) = ₹${advanceBookingValue}`}</p>
+              <p className="payment-details-block-value">
+                <span className="price-pill">{`₹${alaCarteMultiple}`}</span> x 
+                <span className="price-pill">{` (${selectedQty})`}%</span> = 
+                <span className="price-pill">{` ₹${advanceBookingValue}`}</span>
+              </p>
             ) : (
-              <p className="payment-details-block-value">{`₹${selectedPrice} x (${setMenuMultiple*100})% = ₹${advanceBookingValue}`}</p>
+              <p className="payment-details-block-value">
+                <span className="price-pill">{`₹${selectedPrice}`}</span> x 
+                <span className="price-pill">{` (${setMenuMultiple*100})`}%</span> = 
+                <span className="price-pill">{` ₹${advanceBookingValue}`}</span>
+              </p>
             )}            
           </div>
-          <div className="payment-details-block-items last-item">
+          <div className="payment-details-block-items last-item hide-desktop">
             <div className="payment-item">
               <p className="payment-details-block-ttl">Payment</p>
               <p className="payment-details-block-value">{`₹${advanceBookingValue}`}</p>
