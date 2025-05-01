@@ -54,11 +54,11 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
       data.append("last_name", "Doe");
       data.append("payment_page_client_id", "hdfcmaster");
       data.append("currency", "INR");
-      data.append("booked_room", defaultValues.room.label);
-      data.append("booked_table", defaultValues.table_number.label);
-      data.append("booked_date", formatDateForApi(defaultValues.date));
-      data.append("booked_time", convertTimeObjectToString(defaultValues.time));
-      data.append("booked_for", defaultValues.menu_Name);
+      data.append("udf6", defaultValues.room.label);
+      data.append("udf7", defaultValues.table_number.label);
+      data.append("udf8", formatDateForApi(defaultValues.date));
+      data.append("udf9", convertTimeObjectToString(defaultValues.time));
+      data.append("udf10", defaultValues.menu_Name);
       data.append(
         "redirect_url", `https://api.thelovefools.in/api/user/handlePaymentResponse`
       );
