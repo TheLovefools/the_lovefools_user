@@ -22,7 +22,7 @@ const Page = () => {
   const [upcomimgEvent, setUpcomimgEvent] = useState([]);
   const [mergeEvent, setMergeEvent] = useState(items);
   const [showModal, setShowModal] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const defaultValues = useRef({
     id: null,

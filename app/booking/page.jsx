@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Box, Container, Grid } from "@mui/material";
 import CustomizedSteppers from "@/components/stepper/Stepper";
 import DateForm from "@/components/booking-form/DateForm";
@@ -10,9 +10,11 @@ import PaymentDetails from "@/components/booking-form/PaymentDetails";
 import { useRazorpay, RazorpayOrderOptions } from "react-razorpay";
 import axios from "axios";
 import { calcLength } from "framer-motion";
+import Loader from "@/components/common/loader/Loader";
 
 const Page = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const [loader, setLoader] = useState(true);
   const { error, isLoading, Razorpay } = useRazorpay();
   const [defaultValues, setDefaultValues] = useState({
     id:null,
@@ -31,12 +33,21 @@ const Page = () => {
     photo: ""
   });
 
+
+  useEffect(()=> {
+    setTimeout(() => {
+      setLoader(false)      
+    }, 1000);
+  }, [])
+
   
   const handleSubmit = (data) => {
    setDefaultValues(data)
   }
 
   return (
+    <>
+    {loader && <Loader />}
     <section
       className="about-section common-section overflow-auto"
       style={{ background: "#D4BA97", minHeight: "calc(100vh - 132px)", overflow: "visible" }}
@@ -90,6 +101,7 @@ const Page = () => {
         </Box>
       </Box>
     </section>
+    </>
   );
 };
 
