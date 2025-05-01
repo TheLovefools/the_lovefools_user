@@ -87,10 +87,10 @@ const SelectSetMenu = ({
           >
             {loading
               ? Array.from({ length: 3 }).map((_, index) => (
-                  <Grid key={index} item xs={12} sm={12} md={4} lg={4}>
-                    <div className="event-card hover-img alacart-item-grid">
-                      <Skeleton variant="rounded" width={340} height={220} />
-                    </div>
+                  <Grid key={index} item xs={12} sm={12} md={4} lg={4} className={`flex items-center justify-center cursor-pointer box-item-grid`}>
+                    <Box className="event-card hover-img alacart-item-grid">
+                      <Skeleton variant="rounded" width={"33%"} height={450} />
+                    </Box>
                   </Grid>
                 ))
               : menuList?.map((i, index) => (

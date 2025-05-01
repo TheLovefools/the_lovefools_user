@@ -30,13 +30,6 @@ const DateForm = ({
 
   const sendWhatsAppMessages = async () => {
     console.log("sendWhatsAppMessages", "clicked");
-    // if (watch("mobile").length !== 10) {
-    //   setError("mobile", {
-    //     type: "manual",
-    //     message: "Mobile number must be valid ",
-    //   })
-    // }
-
     const isValid = await trigger(["mobile", "email"]); // validate these fields
     if (!isValid) {
       return
