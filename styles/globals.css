@@ -795,12 +795,12 @@ html {
 }
 
 .relative.px-3.gap-3.inline-flex.flex-row.items-center.cursor-text.tap-highlight-transparent.shadow-sm.border-medium.border-default-200.hover\:border-default-400.focus-within\:border-default-foreground.focus-within\:hover\:border-default-foreground.group-data-\[invalid\=true\]\:border-danger.group-data-\[invalid\=true\]\:hover\:border-danger.group-data-\[invalid\=true\]\:focus-within\:hover\:border-danger.h-10.min-h-10.rounded-medium.w-full {
-  height: 45px !important;
+  /* height: 45px !important; */
   background-color: #FFFFFF !important;
 }
 
 .relative.w-full.inline-flex.tap-highlight-transparent.flex-row.items-center.shadow-sm.px-3.gap-3.border-medium.border-default-200.data-\[hover\=true\]\:border-default-400.group-data-\[focus\=true\]\:border-default-foreground.h-10.min-h-10.rounded-small.transition-background.\!duration-150.transition-colors.motion-reduce\:transition-none {
-  height: 45px !important;
+  /* height: 45px !important; */
   background-color: #FFFFFF !important;
 }
 
