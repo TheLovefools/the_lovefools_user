@@ -63,7 +63,7 @@ const UpcomingEventForm = ({handleUpcomingEventSubmit, handleClose, defaultValue
           <div className='upcoming-form-field upcoming-form-name col-span-2'>
             <ControllerTextField
               type='text'
-              placeholder='Enter Event Name.'
+              placeholder='Enter Event Name'
               name='event_name'
               label='Event Name'
             />
@@ -71,7 +71,7 @@ const UpcomingEventForm = ({handleUpcomingEventSubmit, handleClose, defaultValue
           <div className='upcoming-form-field upcoming-form-mobile col-span-2'>
             <ControllerTextField
               type='text'
-              placeholder='Enter Mobile No.'
+              placeholder='Enter Mobile No'
               name='event_mobile'
               label='Mobile No.'
             />
