@@ -204,31 +204,22 @@ const SelectMenuForm = ({
         <Loader marginTop="2rem" background="transparent" marginBottom="3rem" />
       ) : (
         <>
-          {/* {menuList.length === 0 && <p>{`menuList`}</p>} */}
-          {alaCarteList.length === 0 ? (
-            <div className="text-center text-white border p-2 rounded-lg no-data">
-              No data found
-            </div>
-          ) : (
-            <>
-              {menuType.Menu_Type === "1" && (
-                <SelectAlaCarte
-                  alaCarteList={alaCarteList}
-                  defaultValues={defaultValues}
-                  selectMenu={selectMenu}
-                />
-              )}
-              {menuType.Menu_Type === "2" && (
-                <SelectSetMenu
-                  menuList={menuList}
-                  selectIndex={selectIndex}
-                  defaultValues={defaultValues}
-                  selectMenu={selectMenu}
-                  selectSubMenu={selectSubMenu}
-                  subMenu={subMenu}
-                />
-              )}
-            </>
+          {menuType.Menu_Type === "1" && (
+            <SelectAlaCarte
+              alaCarteList={alaCarteList}
+              defaultValues={defaultValues}
+              selectMenu={selectMenu}
+            />
+          )}
+          {menuType.Menu_Type === "2" && (
+            <SelectSetMenu
+              menuList={menuList}
+              selectIndex={selectIndex}
+              defaultValues={defaultValues}
+              selectMenu={selectMenu}
+              selectSubMenu={selectSubMenu}
+              subMenu={subMenu}
+            />
           )}
         </>
       )}
