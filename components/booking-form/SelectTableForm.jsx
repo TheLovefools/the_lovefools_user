@@ -39,7 +39,7 @@ const TableListForm = ({
 
   const [roomList, setRoomList] = useState([]);
   const [unBookTableList, setUnBookTableList] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [ddLoading, setDDLoading] = useState(true);
 
   // Fetch room list only once
   useEffect(() => {
@@ -49,7 +49,9 @@ const TableListForm = ({
           `${NEXT_PUBLIC_API_URL}${API_ENDPOINT.GET_ROOM_LIST}`
         );
         setRoomList(data.data);
+        setDDLoading(false)
       } catch (error) {
+        setDDLoading(true)
         console.error("Error fetching room list:", error);
       }
       console.log("fetchRoomList_called");
@@ -127,6 +129,7 @@ const TableListForm = ({
                 <ControllerSelect
                   options={generateOptions(roomList, "_id", "room_name")}
                   placeholder="Select room"
+                  isLoading={ddLoading}
                   name="room"
                   label="Room"
                 />
@@ -139,6 +142,7 @@ const TableListForm = ({
                     "_id",
                     "table_number"
                   )}
+                  isLoading={ddLoading}
                   placeholder="Select table"
                   name="table_number"
                   label="Table"

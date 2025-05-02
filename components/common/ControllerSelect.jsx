@@ -7,6 +7,7 @@ const ControllerSelect = ({
   placeholder,
   options,
   multiple = false,
+  isLoading = false,
   handleInputChange,
   ...rest
 }) => {
@@ -20,6 +21,7 @@ const ControllerSelect = ({
         <Select
           placeholder={placeholder}
           options={options}
+          isLoading={isLoading}
           isMulti={multiple}
           handleInputChange={handleInputChange}
           isInvalid={!!error}

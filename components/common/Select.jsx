@@ -7,6 +7,7 @@ const Select = ({
   isInvalid = false,
   errorMessage = '',
   label = '',
+  isLoading,
   handleInputChange,
   ...rest
 }) => {
@@ -30,6 +31,7 @@ const Select = ({
           placeholder={placeholder}
           onInputChange={handleInputChange}
           options={options}
+          isLoading={isLoading}
           styles={{
             menu: (provided) => ({
               ...provided,
