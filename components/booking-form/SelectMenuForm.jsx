@@ -40,7 +40,7 @@ const SelectMenuForm = ({
   const [alaCarteList, setAlaCarteList] = useState([]);
   const [subMenu, setSubMenu] = useState("All");
   const [selectIndex, setSelectIndex] = useState();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [menu, setMenu] = useState(true);
   const setCardLimit = ""
 
@@ -54,7 +54,7 @@ const SelectMenuForm = ({
 
   const getMenuList = async (params) => {
     try {
-      setLoading(true);
+      // setLoading(true);
       const { data } = await axios.post(
         `${NEXT_PUBLIC_API_URL}${API_ENDPOINT.GET_MENU_LIST}`,
         params
@@ -63,7 +63,7 @@ const SelectMenuForm = ({
     } catch (error) {
       console.error("Error fetching menu list:", error);
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
