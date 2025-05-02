@@ -124,3 +124,13 @@ export const formatDateForApi = (date) => {
 export const findSingleSelectedValueLabelOption = (options, selectedValue) => {
   return options.find((item) => item?.value === selectedValue) || null;
 };
+
+export const convertToAmPm = (timeString) => {
+  const [hourStr, minute, second] = timeString.split(":");
+  let hour = parseInt(hourStr, 10);
+  const ampm = hour >= 12 ? "PM" : "AM";
+  hour = hour % 12;
+  if (hour === 0) hour = 12; // handle midnight & noon
+
+  return `${hour}:${minute} ${ampm}`;
+}

@@ -4,6 +4,7 @@ import Button from "../common/Button";
 import { API_ENDPOINT, menuType, NEXT_PUBLIC_API_URL } from "@/utils/constant";
 import {
   convertTimeObjectToString,
+  convertToAmPm,
   findSingleSelectedValueLabelOption,
   formatDate,
   formatDateForApi,
@@ -25,7 +26,7 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
   const setMenuMultiple = 0.5; // 50% amaount advance
   const selectedQty= Number(defaultValues.quantity)
   const selectedPrice = Number(defaultValues.price)
-  const selectedRoom = defaultValues.room
+  const selectedRoom = defaultValues.room.label
   const advanceBookingValue = menuTypeSet === "1" ? selectedQty*alaCarteMultiple : selectedPrice*setMenuMultiple
   const selectedMenuImgUrl = menuTypeSet === "1" ? "680fdbee09eb1799fb38980b-.jpg" : defaultValues.photo
   const newUniqueId = generateUniqueId();
@@ -56,7 +57,7 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
       data.append("udf6", defaultValues.room.label);
       data.append("udf7", defaultValues.table_number.label);
       data.append("udf8", formatDateForApi(defaultValues.date));
-      data.append("udf9", convertTimeObjectToString(defaultValues.time));
+      data.append("udf9", convertToAmPm(convertTimeObjectToString(defaultValues.time)));
       data.append("udf10", defaultValues.menu_Name);
       data.append(
         "redirect_url", `https://api.thelovefools.in/api/user/handlePaymentResponse`
@@ -175,9 +176,10 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
             </p>
           </div>
           <div className="payment-details-block-items">
-            <p className="payment-details-block-ttl">Menu Type</p>
+            <p className="payment-details-block-ttl">Room</p>
             <p className="payment-details-block-value">
-              {filterMenu(defaultValues.menuType, menuType)}
+              {/* {filterMenu(defaultValues.menuType, menuType)} */}
+              {selectedRoom}
             </p>
           </div>
           <div className="payment-details-block-items">
