@@ -28,6 +28,7 @@
     "google-map-react": "^2.2.1",
     "google-maps-react": "^2.0.6",
     "mixins": "^0.0.1",
+    "nanoid": "^5.1.5",
     "next": "14.2.10",
     "path": "^0.12.7",
     "react": "^18",

@@ -8,11 +8,11 @@ import {
   formatDate,
   formatDateForApi,
   generateOptions,
+  generateUniqueId,
 } from "@/utils/utils";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { LoadingButton } from "@mui/lab";
-import { ObjectId } from 'bson';
 
 const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
 
@@ -28,8 +28,7 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
   const selectedRoom = defaultValues.room
   const advanceBookingValue = menuTypeSet === "1" ? selectedQty*alaCarteMultiple : selectedPrice*setMenuMultiple
   const selectedMenuImgUrl = menuTypeSet === "1" ? "680fdbee09eb1799fb38980b-.jpg" : defaultValues.photo
-  const newUniqueId = new ObjectId().toHexString();
-
+  const newUniqueId = generateUniqueId();
   const [resOrderId, setResOrderId] = useState("")
   const [resReceiptName, setResReceiptName] = useState("")
 
