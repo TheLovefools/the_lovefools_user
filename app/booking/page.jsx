@@ -10,11 +10,9 @@ import PaymentDetails from "@/components/booking-form/PaymentDetails";
 import { useRazorpay, RazorpayOrderOptions } from "react-razorpay";
 import axios from "axios";
 import { calcLength } from "framer-motion";
-import Loader from "@/components/common/loader/Loader";
 
 const Page = () => {
   const [activeTab, setActiveTab] = useState(0);
-  const [loader, setLoader] = useState(true);
   const { error, isLoading, Razorpay } = useRazorpay();
   const [defaultValues, setDefaultValues] = useState({
     id:null,
@@ -32,14 +30,6 @@ const Page = () => {
     otp: "",
     photo: ""
   });
-
-
-  useEffect(()=> {
-    setTimeout(() => {
-      setLoader(false)      
-    }, 1000);
-  }, [])
-
   
   const handleSubmit = (data) => {
    setDefaultValues(data)
@@ -47,60 +37,69 @@ const Page = () => {
 
   return (
     <>
-    {loader && <Loader />}
-    <section
-      className="about-section common-section overflow-auto"
-      style={{ background: "#D4BA97", minHeight: "calc(100vh - 132px)", overflow: "visible" }}
-    >
-      <Box className="booking-banner-section flex justify-center overflow-auto pt-20 pb-10">
-        <Box sx={{ width: "90%", border: "1px solid #fff",borderRadius:'8px' }} className="mt-36 custom-stepper">
-          <br />
-          <br />
-          <CustomizedSteppers activeTab={activeTab} />
-          <Container sx={{ width:{md:"90%"} }} className="mt-10 booking-form">
-            {activeTab === 0 && (
-              <DateForm
-                defaultValues={defaultValues}
-                setActiveTab={setActiveTab}
-                handleOnsubmit={handleSubmit}
-                setDefaultValues={setDefaultValues}
-              />
-            )}
-            {activeTab === 1 && (
-              <TableForm
-                defaultValues={defaultValues}
-                setActiveTab={setActiveTab}
-                setDefaultValues={setDefaultValues}
-                handleOnsubmit={handleSubmit}
-              />
-            )}
-            {activeTab === 2 && (
-              <SelectMenuForm
-                defaultValues={defaultValues}
-                setDefaultValues={setDefaultValues}
-                setActiveTab={setActiveTab}
-                handleOnsubmit={handleSubmit}
-              />
-            )}
-            {activeTab === 3 && (
-              <MobileVerificationForm
-                defaultValues={defaultValues}
-                setDefaultValues={setDefaultValues}
-                setActiveTab={setActiveTab}
-                handleOnsubmit={handleSubmit}
-              />
-            )}
-            {activeTab === 4 && (
-              <PaymentDetails
-                defaultValues={defaultValues}
-                setDefaultValues={setDefaultValues}
-                setActiveTab={setActiveTab}
-              />
-            )}         
-          </Container>
+      <section
+        className="about-section common-section overflow-auto"
+        style={{
+          background: "#D4BA97",
+          minHeight: "calc(100vh - 132px)",
+          overflow: "visible",
+        }}
+      >
+        <Box className="booking-banner-section flex justify-center overflow-auto pt-20 pb-10">
+          <Box
+            sx={{ width: "90%", border: "1px solid #fff", borderRadius: "8px" }}
+            className="mt-36 custom-stepper"
+          >
+            <br />
+            <br />
+            <CustomizedSteppers activeTab={activeTab} />
+            <Container
+              sx={{ width: { md: "90%" } }}
+              className="mt-10 booking-form"
+            >
+              {activeTab === 0 && (
+                <DateForm
+                  defaultValues={defaultValues}
+                  setActiveTab={setActiveTab}
+                  handleOnsubmit={handleSubmit}
+                  setDefaultValues={setDefaultValues}
+                />
+              )}
+              {activeTab === 1 && (
+                <TableForm
+                  defaultValues={defaultValues}
+                  setActiveTab={setActiveTab}
+                  setDefaultValues={setDefaultValues}
+                  handleOnsubmit={handleSubmit}
+                />
+              )}
+              {activeTab === 2 && (
+                <SelectMenuForm
+                  defaultValues={defaultValues}
+                  setDefaultValues={setDefaultValues}
+                  setActiveTab={setActiveTab}
+                  handleOnsubmit={handleSubmit}
+                />
+              )}
+              {activeTab === 3 && (
+                <MobileVerificationForm
+                  defaultValues={defaultValues}
+                  setDefaultValues={setDefaultValues}
+                  setActiveTab={setActiveTab}
+                  handleOnsubmit={handleSubmit}
+                />
+              )}
+              {activeTab === 4 && (
+                <PaymentDetails
+                  defaultValues={defaultValues}
+                  setDefaultValues={setDefaultValues}
+                  setActiveTab={setActiveTab}
+                />
+              )}
+            </Container>
+          </Box>
         </Box>
-      </Box>
-    </section>
+      </section>
     </>
   );
 };

@@ -63,7 +63,7 @@ const TableListForm = ({
   // Fetch unbooked tables when date, time, or room changes
   const fetchUnBookList = async (params) => {
     try {
-      setLoading(true);
+      setDDLoading(true);
       const { data } = await axios.post(
         `${NEXT_PUBLIC_API_URL}${API_ENDPOINT.GET_BOOK_LIST}`,
         params
@@ -72,7 +72,7 @@ const TableListForm = ({
     } catch (error) {
       console.error("Error fetching unbooked tables:", error);
     } finally {
-      setLoading(false);
+      setDDLoading(false);
     }
   };
 
@@ -159,11 +159,13 @@ const TableListForm = ({
               <div>
                 <div className="rooms-grid">
                   {unBookTableList.length === 0 ? (
-                    <Loader
-                      marginTop="2rem"
-                      background="transparent"
-                      marginBottom="3rem"
-                    />
+                    ddLoading && (
+                      <Loader
+                        marginTop="2rem"
+                        background="transparent"
+                        marginBottom="3rem"
+                      />
+                    )
                   ) : (
                     <>
                       {unBookTableList.map((table) => (
