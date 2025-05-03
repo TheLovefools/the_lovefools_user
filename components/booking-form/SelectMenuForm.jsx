@@ -164,7 +164,6 @@ const SelectMenuForm = ({
         <Loader />
       ) : (
         <>
-          {isAlaCarte && "adasdasdsad"}
           {isAlaCarte ? (
             <SelectAlaCarte
               defaultValues={defaultValues}
