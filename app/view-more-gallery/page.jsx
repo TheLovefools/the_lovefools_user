@@ -165,7 +165,7 @@ const Gallery = () => {
           };
         }
       }  
-      return { ...item, videoId: null, thumbnailUrl: null };
+      return { ...item, videoId: null, thumbnailUrl: null, videoUrl: null };
     });  
     setVideosIFrame(videosWithId);
     console.log("videosWithId_", videosWithId);    
