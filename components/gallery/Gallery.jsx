@@ -23,10 +23,13 @@ const Gallery = () => {
   const [videObj, setVideoObj] = React.useState({});
   const [imageList, setImageList] = React.useState([]);
   const [videoList, setVideoList] = React.useState([]);
+  const [videoIFrameList, setVideoIframeList] = React.useState([]);
   const [galleryObj, setGalleryObj] = React.useState(null);
   const [loading1, setLoading1] = React.useState(false);
   const [loading2, setLoading2] = React.useState(false);
   const router = useRouter()
+
+  const [videosIFrame, setVideosIFrame] = React.useState([]);
 
   const handleView = () => {
    router.push('/view-more-gallery')
@@ -41,10 +44,13 @@ const Gallery = () => {
         `${NEXT_PUBLIC_API_URL}${API_ENDPOINT.GET_GALLERY_LIST_BY_USER}`
       );
       const response = data.data.data;
+      console.log("getGallery_", response);      
       const getPhoto = response.filter((res) => res.photo && !res.video);
       const getVideo = response.filter((res) => res.photo && res.video);
+      const getVideoIFrame = response.filter((res) => res.youtube_iframe);
       setImageList(getPhoto);
       setVideoList(getVideo);
+      setVideoIframeList(getVideoIFrame);
       setLoading1(false);
     } catch (error) {
       setLoading1(false);
@@ -74,9 +80,44 @@ const Gallery = () => {
     }
   };
 
+  const decodeHtml = (html) => {
+    const txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+  };
+
   React.useEffect(() => {
     getGalleryEvents();
   }, []);
+
+  React.useEffect(() => {
+    const videosWithId = videoIFrameList.map((item) => {
+      if (!item.youtube_iframe) return { ...item, videoId: null, thumbnailUrl: null, videoUrl: null};  
+      // Decode the iframe string first
+      const decodedIframe = decodeHtml(item.youtube_iframe);  
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(decodedIframe, "text/html");
+      const iframe = doc.querySelector("iframe");  
+      if (iframe) {
+        const src = iframe.getAttribute("src");
+        console.log("SRC:", src); // ✅ debug check  
+        const match = src.match(/youtube\.com\/embed\/([^\?&"]+)/);
+        if (match && match[1]) {
+          const id = match[1];
+          return {
+            ...item,
+            videoId: id,
+            thumbnailUrl: `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
+            videoUrl: `https://www.youtube.com/watch?v=${id}`,
+          };
+        }
+      }  
+      return { ...item, videoId: null, thumbnailUrl: null };
+    });  
+    setVideosIFrame(videosWithId);
+    console.log("videosWithId_", videosWithId);    
+  }, [videoIFrameList]);
+
   return (
     <section className="gallery-section common-section hover-img" id="Gallery">
       <Container>
@@ -119,7 +160,8 @@ const Gallery = () => {
                     Photo
                   </Button>
                 )}
-                 {videoList.length !== 0 && (
+                {/* {videoList.length !== 0 && ( */}
+                {videoIFrameList.length !== 0 && (
                   <Button
                     onClick={() => {
                       setVideo(true);
@@ -165,7 +207,9 @@ const Gallery = () => {
                             className="gallary-thumbnail"
                             onClick={() => {
                               handleOpen();
-                              setImage(`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${i.photo}`);
+                              setImage(
+                                `${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${i.photo}`
+                              );
                             }}
                           />
                         </Card>
@@ -187,15 +231,19 @@ const Gallery = () => {
             ) : (
               <>
                 {video &&
-                  videoList.length > 0 &&
-                  videoList?.slice(0, 8).map((i, index) => {
+                  // videoList.length > 0 && videoList?.slice(0, 8).map((i, index) => {
+                  videoIFrameList.length > 0 &&
+                  videoIFrameList?.slice(0, 8).map((i, index) => {
                     return (
                       <Grid key={index} item xs={6} sm={6} md={3} lg={3}>
                         <Card className="gallary-card-w">
                           <div
                             onClick={() => {
                               handleOpen();
-                              setVideoObj(`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${i.video}`);
+                              // setVideoObj(
+                              //   `${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${i.video}`
+                              // );
+                              setVideoObj(videosIFrame[index].videoUrl)
                             }}
                           >
                             <Button className="play-icon-btn">
@@ -203,10 +251,11 @@ const Gallery = () => {
                             </Button>
                             <Image
                               alt="Lovefools"
-                              src={`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${i.photo}`}
+                              // src={`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${i.photo}`}
+                              src={videosIFrame[index].thumbnailUrl}
                               width={500}
                               height={500}
-                              className="gallary-thumbnail"
+                              className={`gallary-thumbnail iframe`}
                             />
                           </div>
                         </Card>
@@ -233,7 +282,8 @@ const Gallery = () => {
                 View More
               </Button>
             )}
-            {video && videoList.length > 8 && (
+            {/* {video && videoList.length > 8 && ( */}
+            {video && videoIFrameList.length > 8 && (
               <Button
                 onClick={handleView}
                 variant="contained"
@@ -265,14 +315,24 @@ const Gallery = () => {
                 <CloseIcon />
               </IconButton>
               {video ? (
-                <ReactPlayer
-                  style={{ borderRadius: "8px", position: "relative" }}
-                  url={videObj}
-                  // playing
-                  controls={true}
-                  width="100%"
-                  height="100%"
-                />
+                <div className="yt-player-wrapper" >
+                  <ReactPlayer
+                    style={{ borderRadius: "8px", position: "relative" }}
+                    url={videObj}
+                    className="react-player"
+                    width="100%"
+                    height="100%"
+                    controls={true}
+                  />
+                  {/* <ReactPlayer
+                    style={{ borderRadius: "8px", position: "relative" }}
+                    url={videObj}
+                    // playing
+                    controls={true}
+                    width="100%"
+                    height="100%"
+                  /> */}
+                </div>
               ) : (
                 <Image
                   src={image}
