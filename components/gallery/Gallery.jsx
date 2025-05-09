@@ -60,10 +60,6 @@ const Gallery = () => {
     }
   };
 
-  React.useEffect(() => {
-    getGallery();
-  }, []);
-
   const getGalleryEvents = async () => {
     try {
       setLoading2(true);
@@ -85,8 +81,9 @@ const Gallery = () => {
     txt.innerHTML = html;
     return txt.value;
   };
-
+  
   React.useEffect(() => {
+    getGallery();
     getGalleryEvents();
   }, []);
 

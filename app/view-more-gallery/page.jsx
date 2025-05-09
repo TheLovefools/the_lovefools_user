@@ -87,11 +87,6 @@ const Gallery = () => {
     }
   };
 
-  React.useEffect(() => {
-    getGallery();
-    getGalleryEvents();
-  }, []);
-
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
@@ -142,6 +137,11 @@ const Gallery = () => {
     txt.innerHTML = html;
     return txt.value;
   };
+
+  React.useEffect(() => {
+    getGallery();
+    getGalleryEvents();
+  }, []);
 
   React.useEffect(() => {
     const videosWithId = videoIFrameList.map((item) => {
