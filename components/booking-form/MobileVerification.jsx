@@ -130,17 +130,20 @@ const DateForm = ({
               </div>
             </div>
             {genOtp && (
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-1 md:gap-6">
-                <div className="max-w-[250px] w-full mx-auto mobile-verification-otp">
-                  <ControllerTextField
-                    type="text"
-                    placeholder="Enter otp"
-                    name="otp"
-                    label="OTP"
-                    maxLength="6"
-                  />
+              <>
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-1 md:gap-6">
+                  <div className="max-w-[250px] w-full mx-auto mobile-verification-otp">
+                    <ControllerTextField
+                      type="text"
+                      placeholder="Enter otp"
+                      name="otp"
+                      label="OTP"
+                      maxLength="6"
+                    />
+                  </div>
                 </div>
-              </div>
+                <span className="otp-sent">OTP send on your WhatsApp No.</span>
+              </>
             )}
 
             {true && (

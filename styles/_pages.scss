@@ -1782,3 +1782,13 @@ input::placeholder, textarea::placeholder {
   }
 }
 
+.otp-sent {
+	font-weight: 500;
+	font-size: 0.875rem;
+	line-height: 20px;
+	letter-spacing: 0;
+	color: #222222;
+	text-align: center;
+	margin: 0 0;
+	display: block;
+}
