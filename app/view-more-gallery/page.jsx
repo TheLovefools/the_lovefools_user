@@ -21,6 +21,12 @@ import Loader from "@/components/common/loader/Loader";
 import CloseIcon from "@mui/icons-material/Close";
 import IconButton from "@mui/material/IconButton";
 
+const decodeHtml = (html) => {
+  const txt = document.createElement("textarea");
+  txt.innerHTML = html;
+  return txt.value;
+};
+
 const Gallery = () => {
   const [isPhoto, setIsPhoto] = React.useState(true);
   const [isVideo, setIsVideo] = React.useState(false);
@@ -132,12 +138,6 @@ const Gallery = () => {
     return <Loader />;
   }
 
-  const decodeHtml = (html) => {
-    const txt = document.createElement("textarea");
-    txt.innerHTML = html;
-    return txt.value;
-  };
-
   React.useEffect(() => {
     getGallery();
     getGalleryEvents();
@@ -147,10 +147,10 @@ const Gallery = () => {
     const videosWithId = videoIFrameList.map((item) => {
       if (!item.youtube_iframe) return { ...item, videoId: null, thumbnailUrl: null, videoUrl: null};  
       // Decode the iframe string first
-      const decodedIframe = decodeHtml(item.youtube_iframe);  
+      const decodedIframe = decodeHtml(item.youtube_iframe);
       const parser = new DOMParser();
       const doc = parser.parseFromString(decodedIframe, "text/html");
-      const iframe = doc.querySelector("iframe");  
+      const iframe = doc.querySelector("iframe");
       if (iframe) {
         const src = iframe.getAttribute("src");
         console.log("SRC:", src); // ✅ debug check  
@@ -164,11 +164,11 @@ const Gallery = () => {
             videoUrl: `https://www.youtube.com/watch?v=${id}`,
           };
         }
-      }  
+      }
       return { ...item, videoId: null, thumbnailUrl: null, videoUrl: null };
-    });  
+    });
     setVideosIFrame(videosWithId);
-    console.log("videosWithId_", videosWithId);    
+    console.log("videosWithId_", videosWithId);
   }, [videoIFrameList]);
 
 
