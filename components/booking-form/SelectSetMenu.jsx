@@ -1,6 +1,11 @@
 import { memo, useEffect, useState } from "react";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Modal, Typography } from "@mui/material";
 import Image from "next/image";
+import CloseIcon from "@mui/icons-material/Close";
+import IconButton from "@mui/material/IconButton";
+import { EyeIcon } from '@heroicons/react/24/outline';
+import CustomButton from '@/components/common/Button';
+import { Tooltip } from '@nextui-org/react';
 import { API_ENDPOINT, MenuType, NEXT_PUBLIC_API_URL } from "@/utils/constant";
 import { useFormContext } from "react-hook-form";
 import axios from "axios";
@@ -9,15 +14,25 @@ import Loader from "../common/loader/Loader";
 const SelectSetMenu = ({ defaultValues, selectMenu, menuType, setMenuType, ...props }) => {  
   const { formState: { errors }, watch, setValue } = useFormContext();
   const [selectIndex, setSelectIndex] = useState();
+  const [openModal, setOpenModal] = useState(false);
+  const handleOpenModal = () => setOpenModal(true);
+  const handleCloseModal = () => setOpenModal(false);
   const [loading, setLoading] = useState(false);
+  const [eventObj, setEventObj] = useState({});
   const [menuList, setMenuList] = useState([]);
   const [subMenu, setSubMenu] = useState("All");
   const setCardLimit = "";
 
   const getEvent = (obj) => {
-    // console.log("getEvent_", obj, selectIndex);
+    // console.log("getEvent_", obj);
     setSelectIndex(obj.menu_Name);
     selectMenu(obj);
+  };
+
+  const viewMenu = (obj) => {
+    console.log("viewMenu", obj);
+    setEventObj(obj);
+    handleOpenModal();
   };
 
   const getMenuList = async (params) => {
@@ -138,6 +153,19 @@ const SelectSetMenu = ({ defaultValues, selectMenu, menuType, setMenuType, ...pr
                           width={500}
                           height={500}
                         />
+                        <CustomButton
+                          isIconOnly
+                          type="button"
+                          size="sm"
+                          variant="light"
+                          color="default"
+                          className="btn-view"
+                          onClick={() => viewMenu(i)}
+                        >
+                          <Tooltip content="View Menu">
+                            <EyeIcon className="h-5 w-5" />
+                          </Tooltip>
+                        </CustomButton>
                       </div>
                       <div className="event-body">
                         <Typography
@@ -171,6 +199,37 @@ const SelectSetMenu = ({ defaultValues, selectMenu, menuType, setMenuType, ...pr
           {errors?.menu_Name && (
             <p className="error text-center">Please select the Menu</p>
           )}
+
+          <Modal
+            open={openModal}
+            onClose={handleCloseModal}
+            BackdropProps={{ style: { pointerEvents: "none" } }}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <div className="alacartmenu-modal">
+              <div className="alacartmenu-modal-wrap">
+                <IconButton
+                  onClick={handleCloseModal}
+                  className="modal-close-icon"
+                >
+                  <CloseIcon />
+                </IconButton>
+                <div className="alacartmenu-modal-body">
+                  {/* <p className="alacartmenu-modal-ttl">{eventObj.ala_menu_Name}</p> */}
+                  {/* <p className="alacartmenu-modal-desc">{eventObj.ala_menu_Description}</p> */}
+                  <div className="alacartmenu-menuimg-wrap">
+                    <Image
+                      alt="Lovefools"
+                      src={`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${eventObj.photo}`}
+                      width={500}
+                      height={500}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Modal>
         </>
       )}
     </>
