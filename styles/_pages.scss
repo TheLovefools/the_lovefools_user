@@ -1150,15 +1150,16 @@ input::placeholder, textarea::placeholder {
 
 .price-bttn {
   font-style: normal;
-  font-weight: 600;
-  font-size: 15px;
-  line-height: 17px;
-  letter-spacing: 0.5px;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  line-height: 17px !important;
+  letter-spacing: 0.5px !important;
+  color: #222222 !important;
   height: 36px;
   width: 72px;
-  background-color: #e6e6e6;
+  background-color: #e6e6e6 !important;
   &.active {
-    background-color: #ED1C24;
+    background-color: #ED1C24 !important;
     color: #FFFFFF;
   }
 }
@@ -1358,7 +1359,7 @@ input::placeholder, textarea::placeholder {
         .price-bttn {
           min-width: 120px;
           width: auto;
-          font-size: 1.1rem;
+          font-size: 1.1rem !important;
           margin-top: 12px;
         }
       }
