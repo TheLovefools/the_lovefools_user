@@ -190,18 +190,18 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
           </div>
           <div className="payment-details-block-items">
             <p className="payment-details-block-ttl">SGST</p>
-            <p className="payment-details-block-value">{`ABCDE12XXXX`}</p>
+            <p className="payment-details-block-value">{`2.5%`}</p>
           </div>
           <div className="payment-details-block-items">
             <p className="payment-details-block-ttl">CGST</p>
-            <p className="payment-details-block-value">{`XYZ12XXXX`}</p>
+            <p className="payment-details-block-value">{`2.5%`}</p>
           </div>
           <div className="payment-details-block-items">
             <p className="payment-details-block-ttl">TOTAL</p>
             {menuTypeSet === "1" ? (
               <p className="payment-details-block-value">
                 <span className="price-pill">{`₹${alaCarteMultiple}`}</span> x 
-                <span className="price-pill">{` (${selectedQty})`}%</span> = 
+                <span className="price-pill">{` (${selectedQty})`}</span> = 
                 <span className="price-pill">{` ₹${advanceBookingValue}`}</span>
               </p>
             ) : (
