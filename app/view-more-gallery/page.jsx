@@ -39,6 +39,14 @@ const Gallery = () => {
   const itemsPerPageVideo = 10;
   const [totalPagesVideo, setTotalPagesVideo] = React.useState(1);
 
+  const [currentPageVideoIFrame, setCurrentPageVideoIFrame] = React.useState(1);
+  const itemsPerPageVideoIFrame = 10;
+  const [totalPagesVideoIFrame, setTotalPagesVideoIFrame] = React.useState(1);
+
+  const [videObj, setVideoObj] = React.useState({});
+  const [videoIFrameList, setVideoIframeList] = React.useState([]);
+  const [videosIFrame, setVideosIFrame] = React.useState([]);
+
   const getGallery = async () => {
     try {
       setLoadingGallery(true);
@@ -48,11 +56,13 @@ const Gallery = () => {
       const galleryData = response.data.data;
       const photos = galleryData.filter((item) => item.photo && !item.video);
       const videos = galleryData.filter((item) => item.video);
-
+      const getVideoIFrame = galleryData.filter((item) => item.youtube_iframe);
       setImageList(photos);
       setVideoList(videos);
+      setVideoIframeList(getVideoIFrame);
       setTotalPagesPhoto(Math.ceil(photos.length / itemsPerPagePhoto));
       setTotalPagesVideo(Math.ceil(videos.length / itemsPerPageVideo));
+      setTotalPagesVideoIFrame(Math.ceil(getVideoIFrame.length / itemsPerPageVideoIFrame));
       setLoadingGallery(false);
     } catch (error) {
       setLoadingGallery(false);
@@ -61,7 +71,6 @@ const Gallery = () => {
   };
 
   const Styles = selectedVideo ? "gallery-video" : "gallery-img";
-
 
   const getGalleryEvents = async () => {
     try {
@@ -98,7 +107,8 @@ const Gallery = () => {
   const handleFilterVideos = () => {
     setIsPhoto(false);
     setIsVideo(true);
-    setCurrentPageVideo(1);
+    // setCurrentPageVideo(1);
+    setCurrentPageVideoIFrame(1);
   };
 
   const handleChangePagePhoto = (event, value) => {
@@ -106,7 +116,8 @@ const Gallery = () => {
   };
 
   const handleChangePageVideo = (event, value) => {
-    setCurrentPageVideo(value);
+    // setCurrentPageVideo(value);
+    setCurrentPageVideoIFrame(value);
   };
 
   const indexOfLastPhoto = currentPagePhoto * itemsPerPagePhoto;
@@ -117,21 +128,67 @@ const Gallery = () => {
   const indexOfFirstVideo = indexOfLastVideo - itemsPerPageVideo;
   const currentVideos = videoList.slice(indexOfFirstVideo, indexOfLastVideo);
 
-  if (loadingGallery || loadingCMS) {
-    return <Loader />;
-  }
+  const indexOfLastVideoIFrame = currentPageVideoIFrame * itemsPerPageVideoIFrame;
+  const indexOfFirstVideoIFrame = indexOfLastVideoIFrame - itemsPerPageVideoIFrame;
+  const currentVideosIFrame = videoIFrameList.slice(indexOfFirstVideoIFrame, indexOfLastVideoIFrame);
+
+  // if (loadingGallery || loadingCMS) {
+  //   return <Loader />;
+  // }
+
+  const decodeHtml = (html) => {
+    const txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+  };
+
+  const videosWithId = (list) =>
+    list.map((item) => {
+      if (item.youtube_iframe) {
+        const decodedIframe = decodeHtml(item.youtube_iframe);
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(decodedIframe, "text/html");
+        const iframe = doc.querySelector("iframe");
+        if (iframe) {
+          const src = iframe.getAttribute("src");
+          const match = src.match(/youtube\.com\/embed\/([^\?&"]+)/);
+          if (match && match[1]) {
+            const id = match[1];
+            return {
+              ...item,
+              videoId: id,
+              thumbnailUrl: `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
+              videoUrl: `https://www.youtube.com/watch?v=${id}`,
+            };
+          }
+        }
+      }
+      return {
+        ...item,
+        videoId: null,
+        thumbnailUrl: null,
+        videoUrl: null,
+      };
+    });
+  
+
+  React.useEffect(() => {
+    setVideosIFrame(videosWithId(currentVideosIFrame));
+    console.log("videosWithId()_", videosIFrame);
+  }, [videoIFrameList]);
 
   return (
     <section className="common-section hover-img bg-color" id="Gallery">
-      <div className="" style={{ height: '50px' }}></div>
+      <div className="" style={{ height: "50px" }}></div>
       <Container>
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <div className="info-wrap text-center">
               <Typography
                 variant="h2"
-                className={`common-heading-h2 ${loadingCMS ? "" : "center-line"
-                  }`}
+                className={`common-heading-h2 ${
+                  loadingCMS ? "" : "center-line"
+                }`}
               >
                 {loadingCMS ? (
                   <Skeleton
@@ -153,8 +210,9 @@ const Gallery = () => {
                 <Button
                   onClick={handleFilterPhotos}
                   variant="contained"
-                  className={`${isPhoto ? "btn-primary" : "btn-secondary !bg-white"
-                    } btn-sm`}
+                  className={`${
+                    isPhoto ? "btn-primary" : "btn-secondary !bg-white"
+                  } btn-sm`}
                   style={{ marginRight: "10px" }}
                 >
                   Photos ({imageList.length})
@@ -162,10 +220,12 @@ const Gallery = () => {
                 <Button
                   onClick={handleFilterVideos}
                   variant="contained"
-                  className={`${isVideo ? "btn-primary" : "btn-secondary !bg-white"
-                    } btn-sm`}
+                  className={`${
+                    isVideo ? "btn-primary" : "btn-secondary !bg-white"
+                  } btn-sm`}
                 >
-                  Videos ({videoList.length})
+                  {/* Videos ({videoList.length})  */}
+                  Videos ({videoIFrameList.length})
                 </Button>
               </div>
             </div>
@@ -199,7 +259,7 @@ const Gallery = () => {
                 </Grid>
               ))}
 
-            {isVideo &&
+            {/* {isVideo &&
               (currentVideos.length > 0 ? (
                 currentVideos.map((item, index) => (
                   <Grid key={index} item xs={6} sm={6} md={3} lg={3}>
@@ -230,8 +290,60 @@ const Gallery = () => {
                     No Videos Available
                   </Typography>
                 </Grid>
+              ))} */}
+
+            {isVideo &&
+              (currentVideosIFrame.length > 0 ? (
+                currentVideosIFrame.map((item, index) => (
+                  <Grid key={index} item xs={6} sm={6} md={3} lg={3}>
+                    <Card className="gallary-card-w">
+                      <div
+                        onClick={() => {
+                          setSelectedVideo(item.youtube_iframe);
+                          handleOpen();
+                          setVideoObj(videosIFrame[index].videoUrl);
+                        }}
+                      >
+                        <Button className="play-icon-btn">
+                          <PlayCircleOutlineIcon className="play-icon" />
+                        </Button>
+                        <Image
+                          alt="Lovefools"
+                          // src={`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${item.photo}`}
+                          src={videosIFrame[index].thumbnailUrl}
+                          width={500}
+                          height={500}
+                          className="gallary-thumbnail"
+                        />
+                      </div>
+                    </Card>
+                  </Grid>
+                ))
+              ) : (
+                <Grid item xs={12}>
+                  <Typography variant="h6" align="center">
+                    No Videos Available
+                  </Typography>
+                </Grid>
               ))}
+
           </Grid>
+
+          {/* {isVideo && (
+            <>
+              <div>asdasd</div>
+              <br />
+              <br />
+              <div>{JSON.stringify(currentVideos)}</div>
+              <div>asdasd</div>
+              <br />
+              <br />
+              <div>{JSON.stringify(currentVideosIFrame)}</div>
+              <br />
+              <br />
+              <div>{JSON.stringify(videosIFrame)}</div>
+            </>
+          )} */}
 
           <Box className="flex items-center justify-end w-full" paddingX={12}>
             <br />
@@ -243,11 +355,12 @@ const Gallery = () => {
                 onChange={handleChangePagePhoto} // Fetch data for the selected page
               />
             )}
-            {isVideo && totalPagesVideo > 1 && (
-
+            {isVideo && totalPagesVideoIFrame > 1 && (
               <Pagination
-                count={totalPagesVideo}
-                page={currentPageVideo}
+                // count={totalPagesVideo}
+                count={totalPagesVideoIFrame}
+                // page={currentPageVideo}
+                page={currentPageVideoIFrame}
                 onChange={handleChangePageVideo}
               />
             )}
@@ -277,8 +390,8 @@ const Gallery = () => {
               {selectedVideo ? (
                 <ReactPlayer
                   style={{ borderRadius: "8px", position: "relative" }}
-                  url={`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${selectedVideo}`}
-                  // playing
+                  // url={`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${selectedVideo}`}
+                  url={videObj}
                   controls={true}
                   width="100%"
                   height="100%"
