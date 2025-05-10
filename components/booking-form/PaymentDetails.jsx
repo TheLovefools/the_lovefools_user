@@ -212,12 +212,12 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
               </p>
             )}            
           </div>
-          <div className="payment-details-block-items last-item hide-desktop">
+          {/* <div className="payment-details-block-items last-item hide-desktop">
             <div className="payment-item">
               <p className="payment-details-block-ttl">Payment</p>
               <p className="payment-details-block-value">{`₹${advanceBookingValue}`}</p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="flex justify-center space-x-4 next-prev-bttn">

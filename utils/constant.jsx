@@ -47,8 +47,12 @@ export const AboutUsSection =
     { value: 5, label: "Table-5", image:"" },
   ];
   
-  export const MenuType = [
+  export const MenuTypeOld = [
     "All","Veg","NonVeg","Drink"
+  ]
+
+  export const MenuType = [
+    "All","Veg","NonVeg"
   ]
 
  export const items = [

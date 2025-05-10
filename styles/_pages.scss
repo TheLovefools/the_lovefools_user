@@ -1165,7 +1165,7 @@ input::placeholder, textarea::placeholder {
 }
 
 .btn-view {
-  background-color: #F4F4F4 !important;
+  background-color: #DBDBDB !important;
   font-style: normal;
   font-weight: 600;
   font-size: 15px;
@@ -1174,7 +1174,7 @@ input::placeholder, textarea::placeholder {
   color: #222222;
   height: 30px;
   width: 42px;
-  opacity: 0.4;
+  opacity: 1;
   &:hover {
     opacity: 1;
   }
@@ -1478,10 +1478,12 @@ input::placeholder, textarea::placeholder {
     letter-spacing: 0.5px;
     height: auto;
     width: auto;
-    background-color: transparent;
+    background-color: #C6AD8C;
     color: #222222;
-    padding: 1px 4px;
+    padding: 0px 10px;
     border-radius: 4px;
+    margin: 10px 0px 4px 4px;
+    border: 2px solid #FFFFFF;
   }
 
 }

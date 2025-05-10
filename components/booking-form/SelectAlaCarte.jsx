@@ -3,6 +3,9 @@ import { Box, Button, Grid, Modal, Typography } from "@mui/material";
 import Image from "next/image";
 import CloseIcon from "@mui/icons-material/Close";
 import IconButton from "@mui/material/IconButton";
+import { EyeIcon } from '@heroicons/react/24/outline';
+import CustomButton from '@/components/common/Button';
+import { Tooltip } from '@nextui-org/react';
 import { ObjectId } from "bson";
 import { useFormContext } from "react-hook-form";
 import axios from "axios";
@@ -114,6 +117,19 @@ const SelectAlaCarte = ({ defaultValues, selectMenu, menuType, ...props }) => {
                           width={500}
                           height={500}
                         />
+                        <CustomButton
+                          isIconOnly
+                          type="button"
+                          size="sm"
+                          variant="light"
+                          color="default"
+                          className="btn-view"
+                          onClick={() => getEvent(item)}
+                        >
+                          <Tooltip content="View Menu">
+                            <EyeIcon className="h-5 w-5" />
+                          </Tooltip>
+                        </CustomButton>
                       </div>
                       <div className="event-body">
                         {/* <p className="">{item.photo}</p> */}
@@ -129,12 +145,12 @@ const SelectAlaCarte = ({ defaultValues, selectMenu, menuType, ...props }) => {
                           <Typography className="p14">
                             {item.ala_menu_Description}
                           </Typography>
-                          <Button
+                          {/* <Button
                             className="read-more-btn"
                             onClick={() => getEvent(item)}
                           >
                             View Menu
-                          </Button>
+                          </Button> */}
                         </div>
                       </div>
                     </Box>
