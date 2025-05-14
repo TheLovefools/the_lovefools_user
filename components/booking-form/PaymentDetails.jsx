@@ -56,8 +56,8 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
       data.append("currency", "INR");
       data.append("udf6", defaultValues.room.label);
       data.append("udf7", defaultValues.table_number.label);
-      data.append("udf8", formatDateForApi(defaultValues.date));
-      data.append("udf9", convertToAmPm(convertTimeObjectToString(defaultValues.time)));
+      data.append("udf8", formatDateForApi(defaultValues.bookingDate));
+      data.append("udf9", defaultValues.bookingSlot["label"]);
       data.append("udf10", defaultValues.menu_Name);
       data.append(
         "redirect_url", `https://api.thelovefools.in/api/user/handlePaymentResponse`
@@ -83,11 +83,15 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
         receiptName: response?.data ? "receiptNo_"+response.data.orderId : "receiptNo_nores_"+newUniqueId,
         price: advanceBookingValue,
         date: formatDateForApi(defaultValues.date),
+        bookingDate: formatDateForApi(defaultValues.bookingDate),
         time: convertTimeObjectToString(defaultValues.time),
+        bookingSlot: defaultValues.bookingSlot["value"],
         type: defaultValues.menuType,
         sub_type: defaultValues.subMenuType,
         room: defaultValues.room.label,
+        room_id: defaultValues.room.value,
         table_number: defaultValues.table_number.label,
+        table_id: defaultValues.table_number.value,
         orderStatus: "new",
         paymentSuccess: false,
       };
@@ -120,11 +124,15 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
     receiptName: resReceiptName,
     price: advanceBookingValue,
     date: formatDateForApi(defaultValues.date),
+    bookingDate: formatDateForApi(defaultValues.bookingDate),
     time: convertTimeObjectToString(defaultValues.time),
+    bookingSlot: defaultValues.bookingSlot["value"],
     type: defaultValues.menuType,
     sub_type: defaultValues.subMenuType,
     room: defaultValues.room.label,
+    room_id: defaultValues.room.value,
     table_number: defaultValues.table_number.label,
+    table_id: defaultValues.table_number.value,
     orderStatus: "new",
     paymentSuccess: false,
   };
@@ -162,14 +170,14 @@ const PaymentDetails = ({ setActiveTab, defaultValues, setDefaultValues }) => {
             <p className="payment-details-block-value">{defaultValues.email}</p>
           </div>
           <div className="payment-details-block-items">
-            <p className="payment-details-block-ttl">Date</p>
+            <p className="payment-details-block-ttl">Booking Date & Time Slot</p>
             <p className="payment-details-block-value">
-              {formatDate(defaultValues.date)}{" "}
-              {convertTimeObjectToString(defaultValues.time)}
+              {formatDate(defaultValues.bookingDate)}{" "}
+              {defaultValues.bookingSlot["label"]}
             </p>
           </div>
           <div className="payment-details-block-items">
-            <p className="payment-details-block-ttl">Table</p>
+            <p className="payment-details-block-ttl">Table No.</p>
             <p className="payment-details-block-value">
               {defaultValues.table_number.label}
               {/* {selectedRoom} */}
