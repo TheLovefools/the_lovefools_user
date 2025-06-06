@@ -61,7 +61,7 @@ const Page = () => {
   }, [upcomimgEvent]);
 
   const toggleUpcomingEventFormModal = (value) => {
-    defaultValues.current = {      
+    defaultValues.current = {
       id: null,
       event_date: new Date(value?.date ? value?.date : ""),
       event_time: null,
@@ -77,7 +77,6 @@ const Page = () => {
   };
 
   const onSubmit = async (eventData) => {
-    
     const payload = {
       // description: eventData.message,
       // date: eventData.date,
@@ -97,30 +96,35 @@ const Page = () => {
       event_Mobile: eventData.event_mobile,
       event_Email: eventData.event_email,
       event_Enquiry_Option: eventData.event_enquiry_option.value,
-    }
-    
+    };
+
     console.log("UpcomingEventForm payload_", eventData, payload);
-    
+
     try {
       await axios.post(
         `${NEXT_PUBLIC_API_URL}${API_ENDPOINT.ADD_ENQUIRY}`,
         payload
       );
-      
+
       console.log("UpcomingEventForm payload_success", payload);
       setShowModal(false);
       toast.success("Update Event Enquiry sent Successfully");
     } catch (error) {
       console.error("UpcomingEventForm error", error);
     }
-
   };
 
   return (
     <>
       <Box className="home-banner-section bg-white">
         {loading ? (
-          <Loader marginTop="0" paddingTop="40vh" paddingBottom="40vh" background="#000" variant="rectangular" />
+          <Loader
+            marginTop="0"
+            paddingTop="40vh"
+            paddingBottom="40vh"
+            background="#000"
+            variant="rectangular"
+          />
         ) : (
           <Carousel
             showArrows={false}
@@ -136,7 +140,7 @@ const Page = () => {
                   <h2 className="carousel-title common-heading-h1">
                     <span style={{ fontWeight: "600" }}>{item.event_Name}</span>
                     <br /> {item.description}
-                    <div className="" style={{height: '20px'}}></div>
+                    <div className="" style={{ height: "20px" }}></div>
                     <Button
                       variant="contained"
                       className="btn-primary btn-sm"
@@ -146,13 +150,13 @@ const Page = () => {
                     </Button>
                   </h2>
                   <Image
-                          alt="Lovefools"
-                          src={`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${item.photo}`}
-                          className="event-img"
-                          width={500}
-                          height={500}
-                        />
-                        <div className="banner-overlay"></div>
+                    alt="Lovefools"
+                    src={`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${item.photo}`}
+                    className="event-img"
+                    width={500}
+                    height={500}
+                  />
+                  <div className="banner-overlay"></div>
                 </div>
               );
             })}
