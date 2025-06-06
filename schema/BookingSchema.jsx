@@ -8,17 +8,6 @@ export const dateSchema = Yup.object().shape({
   time: Yup.object().required("Time is required"),
 });
 
-// Appointment Schema for Booking
-export const appointmentSchema = Yup.object().shape({
-  bookingDate: Yup.date()
-    .required('Please select a date')
-    .typeError('Invalid date selected'),
-  bookingSlot: Yup.object({
-    label: Yup.string().required(),
-    value: Yup.string().required(),
-  }).required("Booking Slot is required"),
-});
-
 // Table Schema
 export const tableSchema = Yup.object().shape({
   room: Yup.object({

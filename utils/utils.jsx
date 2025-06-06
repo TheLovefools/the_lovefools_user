@@ -121,13 +121,8 @@ export const formatDateForApi = (date) => {
   return `${year}-${month}-${day}`; // Format as YYYY-MM-DD
 };
 
-export const findSingleSelectedValueLabelOptionOld = (options, selectedValue) => {
-  return options.find((item) => item?.value === selectedValue) || null;
-};
-
 export const findSingleSelectedValueLabelOption = (options, selectedValue) => {
-  const val = selectedValue?.value || selectedValue;
-  return options.find((item) => item?.value === val) || null;
+  return options.find((item) => item?.value === selectedValue) || null;
 };
 
 export const convertToAmPm = (timeString) => {
@@ -139,7 +134,3 @@ export const convertToAmPm = (timeString) => {
 
   return `${hour}:${minute} ${ampm}`;
 }
-
-export const getUTCMidnightISOString = (date) => {
-  return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())).toISOString();
-};

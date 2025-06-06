@@ -621,7 +621,7 @@
 }
 
 .text-danger {
-  color: #d00808 !important;
+  color: red !important;
   background: transparent;
   border-radius: 10px;
   padding: 5px;
@@ -1014,9 +1014,6 @@ input::placeholder, textarea::placeholder {
 .custom-stepper label.text-small {
   color: #222222 !important;
 }
-.custom-stepper label.text-small.text-danger {
-  color: #d00808 !important;
-}
 .mobile-verification .mobile-verification-mobile label {
   color: #222222 !important;
 }
@@ -1026,7 +1023,7 @@ input::placeholder, textarea::placeholder {
 }
 
 .next-prev-bttn button.bg-transparent.btn-booking {
-  color: #d00808 !important;
+  color: red !important;
   background-color: #FFFFFF !important;
 }
 
@@ -1415,202 +1412,6 @@ input::placeholder, textarea::placeholder {
 }
 
 
-
-.loader-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.99);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.loader-spinner {
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid #ed1c24;
-  border-radius: 50%;
-  width: 70px;
-  height: 70px;
-  animation: spin 2s linear infinite;
-}
-
-.loader-text {
-  margin-top: 20px;
-  font-size: 1.2rem;
-  color: #555;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.date-custom {
-  margin-bottom: 0;
-  .flex-col {
-    .flex-row {
-      height: 44px;
-      border-radius: 8px;
-    }
-  }
-  .mb-3 {
-    margin-bottom: 0;
-    margin-top: 3px;
-  }
-}
-
-.otp-sent {
-	font-weight: 500;
-	font-size: 0.875rem;
-	line-height: 20px;
-	letter-spacing: 0;
-	color: #222222;
-	text-align: center;
-	margin: 0 0;
-	display: block;
-}
-
-.backdrop-modal .gallery-img img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
-.bg-overlay\/50 {
-  background-color: rgba(255, 255, 255, 0.9) !important;
-}
-
-.upcoming-form-bttn {
-  color: #FFFFFF !important;
-  font-size: 15px;
-  font-weight: 500;
-}
-
-.custom-stepper-note {
-  font-weight: 600 !important;
-  text-transform: uppercase;
-  font-size: 1.2rem;
-  line-height: 150%;
-  letter-spacing: 0;
-  color: #353535 !important;
-  text-align: center;
-  margin: 10px 0 40px !important;
-  display: block;
-}
-
-.not-available-txt {
-font-weight: 500 !important;
-  font-size: 1rem;
-  line-height: 150%;
-  letter-spacing: 0;
-  color: #d00808 !important;
-  text-align: center;
-  margin: 20px 0 0 !important;
-  display: block;
-}
-
-.footer-container {
-  max-width: calc(100% - 150px);
-}
-
-.react-datepicker-popper .react-datepicker__triangle {
-  display: none;
-}
-.react-datepicker-wrapper {
-  width: 100%;
-  .calendar-main-class {
-    font-family: "Inter", sans-serif !important;
-    color: #000000;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    padding: 0.625rem;
-    padding-left: 2.25rem;
-    box-sizing: border-box;
-    border: 2px solid #E4E4E7;
-    border-radius: 8px;
-    width: 100%;
-    min-width: 250px;
-    &.border-danger {
-      border-color: #f31260;
-    }
-    &::placeholder {
-      color: #9ca3af;
-    }
-    &:focus-visible {
-      outline: 0;
-    }
-  }
-}
-.react-datepicker.calendar-outer-class {
-  font-family: "Inter", sans-serif !important;
-  color: #000000;
-  border-radius: 0;
-  border: 0;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  .react-datepicker__month-container {
-    padding: 10px 10px 5px;
-  }
-  .react-datepicker__header  {
-    background-color: #FFFFFF;
-    text-align: center;
-    border-bottom: 2px solid #F4F4F4;
-    border-radius: 0;
-    padding: 0px 0 15px;
-    margin-bottom: 5px;
-    position: relative;
-    .items-center {
-      span.text-sm {
-        font-weight: 600;
-        font-size: 0.875rem;
-        line-height: 1.25rem;
-      }
-    }
-    .react-datepicker__day-name {
-      line-height: 1.5rem;
-      font-weight: 500;
-      font-size: 0.875rem;
-      width: 36px;
-    }
-  }
-  .calendar-base-class {
-    width: 36px;
-    height: 36px;
-    line-height: 2.25rem;
-    font-weight: 600;
-    font-size: 0.875rem;
-    border-radius: 0.3rem;
-    &.react-datepicker__day--outside-month {
-      opacity: 0.4;
-    }
-    &.calendar-today-class {
-      background-color: rgba(237, 28, 36, 0.4);
-      // background-color: rgba(19, 147, 244, 0.4);
-    }
-    &.react-datepicker__day--keyboard-selected {
-      background-color: transparent;
-    }
-    &.react-datepicker__day--selected {
-      // background-color: #1393f4;
-      background-color: #ED1C24;
-      color: #FFFFFF;
-    }
-    &.react-datepicker__day--disabled,
-    &.react-datepicker__day--excluded {
-      background-color: #dbdbdb;
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-  }
-}
-
-
 @media (max-width: 1199px) {
 
   .payment-details-wrap {
@@ -1685,14 +1486,6 @@ font-weight: 500 !important;
     border: 2px solid #FFFFFF;
   }
 
-  .custom-stepper-note {
-    font-size: 0.8rem;
-  }
-
-  .footer-container {
-    max-width: 100%;
-  }
-
 }
 
 @media (max-width: 767px) {
@@ -1746,10 +1539,6 @@ font-weight: 500 !important;
         text-decoration: underline;
       }
     }
-  }
-
-  .lovefools-body .footer-menu {
-    justify-content: space-between;
   }
 
 }
@@ -1974,3 +1763,63 @@ font-weight: 500 !important;
 
 }
 
+
+
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.99);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loader-spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #ed1c24;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  animation: spin 2s linear infinite;
+}
+
+.loader-text {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.date-custom {
+  margin-bottom: 0;
+  .flex-col {
+    .flex-row {
+      height: 44px;
+      border-radius: 8px;
+    }
+  }
+  .mb-3 {
+    margin-bottom: 0;
+    margin-top: 3px;
+  }
+}
+
+.otp-sent {
+	font-weight: 500;
+	font-size: 0.875rem;
+	line-height: 20px;
+	letter-spacing: 0;
+	color: #222222;
+	text-align: center;
+	margin: 0 0;
+	display: block;
+}

@@ -22,8 +22,6 @@ const Page = () => {
     table_number: null,
     mobile: "",
     date: null,
-    bookingDate: null,
-    bookingSlot: null,
     time: null,
     price: "",
     menuType: '',
@@ -47,14 +45,13 @@ const Page = () => {
           overflow: "visible",
         }}
       >
-        <Box className="booking-banner-section flex justify-center overflow-visible pt-20 pb-10">
+        <Box className="booking-banner-section flex justify-center overflow-auto pt-20 pb-10">
           <Box
             sx={{ width: "90%", border: "1px solid #fff", borderRadius: "8px" }}
             className="mt-36 custom-stepper"
           >
             <br />
             <br />
-            <p className="custom-stepper-note">Drop in anytime between 4pm - 6pm <br/>no Reservations needed</p>
             <CustomizedSteppers activeTab={activeTab} />
             <Container
               sx={{ width: { md: "90%" } }}

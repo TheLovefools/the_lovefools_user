@@ -15,9 +15,7 @@ export const API_ENDPOINT = {
   GET_FILE: (id) => `${NEXT_PUBLIC_API_URL}file/${id}`,
   GET_MENU_LIST:'getMenuList',
   GET_ROOM_LIST:'getRoomList',
-  GET_BOOKING_DATES_LIST:'getPartyList',
   GET_BOOK_LIST:'getBookList',
-  GET_TABLE_LIST:'getTableList',
   GET_ALACARTE_LIST:'getAlaCarteMenu',
   ADD_RECEIPT: 'addReceipt',
   GET_UPCOMING_EVENT: 'getUpComingEventList',
@@ -93,25 +91,5 @@ export const AboutUsSection =
     {
       value: '3',
       type: 'Other',
-    },
-  ];
-
-
-  export const bookingSlotOptions = [
-    {
-      value: '0',
-      slot: '11:00 AM - 1:00 PM',
-    },
-    {
-      value: '1',
-      slot: '1:30 PM - 3:30 PM',
-    },
-    {
-      value: '2',
-      slot: '7:00 PM - 9:00 PM',
-    },
-    {
-      value: '3',
-      slot: '9:30 PM - 11:30 PM',
     },
   ];
