@@ -436,8 +436,11 @@
 
   .testimonial-card {
     position: relative;
-    max-width: 360px;
-    height: 300px;
+    width: 100%;
+    max-width: 420px;
+    min-height: 300px;
+    height: auto;
+    max-height: 400px;
     background: $bg-black;
     padding: 30px;
     border-radius: 50px;
@@ -1610,6 +1613,41 @@ font-weight: 500 !important;
   }
 }
 
+.lovefools-body {
+  .next-error-h1 {
+    color: #FFFFFF;
+    & ~ div {
+      color: #FFFFFF;
+      h2 {
+        color: #FFFFFF !important;
+      }
+    }
+  }
+}
+
+.testimonial-section {
+  .slide-item {
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+  .slick-dots li {
+    width: 16px;
+    height: 16px;
+    margin: 0px;
+    button {
+      padding: 0;
+    }
+  }
+  .slick-slider {
+    .slick-list {
+      .slick-track {
+        display: flex;
+        column-gap: 20px;
+      }
+    }
+  }
+}
+
 
 @media (max-width: 1199px) {
 
@@ -1974,14 +2012,3 @@ font-weight: 500 !important;
 
 }
 
-.lovefools-body {
-  .next-error-h1 {
-    color: #FFFFFF;
-    & ~ div {
-      color: #FFFFFF;
-      h2 {
-        color: #FFFFFF !important;
-      }
-    }
-  }
-}

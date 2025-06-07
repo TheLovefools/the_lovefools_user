@@ -57,12 +57,14 @@ const getSliderSettings = (slidesToShow = 3, testimonialList) => ({
     {
       breakpoint: 768, // For smaller devices like smartphones
       settings: {
+        dots: testimonialList.length > 1 ? true : false,
         slidesToShow: slidesToShow > 2 ? 2 : slidesToShow, // Show up to 2 slides
       },
     },
     {
       breakpoint: 480, // For very small devices
       settings: {
+        dots: testimonialList.length > 1 ? true : false,
         slidesToShow: 1, // Show 1 slide
       },
     },
@@ -77,28 +79,28 @@ const Testimonial = () => {
 
   const getTestimonials = async () => {
     try {
-      setLoading1(true)
+      setLoading1(true);
       const response = await axiosInstance.post(
         `${NEXT_PUBLIC_API_URL}${API_ENDPOINT.GET_TESTIMONIAL_LIST}`
       );
-      setLoading1(false)
+      setLoading1(false);
       setTestimonialList(response.data.data);
     } catch (error) {
-      setLoading1(false)
+      setLoading1(false);
       console.error(error);
     }
   };
 
   const getTestimonialsSection = async () => {
     try {
-      setLoading2(true)
+      setLoading2(true);
       const data = await axios.post(
         `${NEXT_PUBLIC_API_URL}${API_ENDPOINT.GET_CMS}`
       );
-      setLoading2(false)
+      setLoading2(false);
       return setTestimonialObj(data.data.data[3]);
     } catch (error) {
-      setLoading2(false)
+      setLoading2(false);
       console.log(error);
     }
   };
@@ -130,40 +132,44 @@ const Testimonial = () => {
               {loading2 ? (
                 <Skeleton variant="text" sx={{ fontSize: "2rem" }} />
               ) : (
-              <Typography variant="h3" className="common-heading-h3">
-                {testimonialObj?.description}
-              </Typography>
+                <Typography variant="h3" className="common-heading-h3">
+                  {testimonialObj?.description}
+                </Typography>
               )}
             </div>
           </Grid>
           {loading1 ? (
-              <>
-                {Array.from({ length: 3 }).map((_, index) => {
-                  return (
-                    <Grid key={index} item xs={12} sm={12} md={4} lg={4}>
-                        <Skeleton variant="rounded" width={340} height={220} />
-                    </Grid>
-                  );
-                })}
-              </>
-            ) : (
-          <Grid item xs={12}>
-        
-            <StyledSlider {...getSliderSettings(3, testimonialList)}>
-              {testimonialList.map((item, index) => (
-                <div className="testimonial-card" key={index}>
-                  <div className="testimonial-img">
-                    <Image src={`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${item.photo}`} alt="avatar" width={100} height={100} />
+            <>
+              {Array.from({ length: 3 }).map((_, index) => {
+                return (
+                  <Grid key={index} item xs={12} sm={12} md={4} lg={4}>
+                    <Skeleton variant="rounded" width={340} height={220} />
+                  </Grid>
+                );
+              })}
+            </>
+          ) : (
+            <Grid item xs={12}>
+              <StyledSlider {...getSliderSettings(3, testimonialList)}>
+                {testimonialList.map((item, index) => (
+                  <div className="testimonial-card" key={index}>
+                    <div className="testimonial-img">
+                      <Image
+                        src={`${process.env.NEXT_PUBLIC_CLOUD_FRONT_URL}${item.photo}`}
+                        alt="avatar"
+                        width={100}
+                        height={100}
+                      />
+                    </div>
+                    <div className="testimonial-body">
+                      <Image src={doubleQuate} alt="double-quate" />
+                      <p className="p16">{item.description}</p>
+                    </div>
                   </div>
-                  <div className="testimonial-body">
-                    <Image src={doubleQuate} alt="double-quate" />
-                    <p className="p16">{item.description}</p>
-                  </div>
-                </div>
-              ))}
-            </StyledSlider>
-          </Grid>
-            )}
+                ))}
+              </StyledSlider>
+            </Grid>
+          )}
         </Grid>
       </Container>
     </section>
