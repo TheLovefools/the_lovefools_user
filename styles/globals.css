@@ -274,7 +274,7 @@ html {
 }
 @media screen and (max-width: 767px) {
   .lovefools-body .footer-menu {
-    justify-content: start;
+    justify-content: space-between;
     margin-top: 20px;
   }
 }

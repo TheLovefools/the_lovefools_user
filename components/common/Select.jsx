@@ -16,7 +16,7 @@ const Select = ({
       {label && (
        <label
        style={{ color: '#fff' }}
-       className={`text-small ${rest.isDisabled && 'opacity-disabled'}`}
+       className={`text-small ${rest.isDisabled ? 'opacity-disabled' : ""} ${isInvalid && errorMessage ? "text-danger" : ""}`}
      >
        {label}
      </label>
@@ -75,12 +75,15 @@ const Select = ({
           }}
           {...rest}
         />
-        {isInvalid && errorMessage && (
+        {/* {isInvalid && errorMessage && (
           <div
             className='p-1 text-tiny text-danger'
             role='alert'>
             {errorMessage}
           </div>
+        )} */}
+        {isInvalid && errorMessage && (
+          <p className="text-tiny text-danger mt-1">{errorMessage}</p>
         )}
       </div>
     </div>

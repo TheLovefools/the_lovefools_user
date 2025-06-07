@@ -110,7 +110,7 @@ const UpcomingEventForm = ({handleUpcomingEventSubmit, handleClose, defaultValue
               onClick={handleClose}>
               Cancel
             </Button> */}
-            <Button type='submit' className='w-full' style={{width: '100%'}}>{defaultValues.id ? 'Update' : 'Send'}</Button>
+            <Button type='submit' className='w-full upcoming-form-bttn' style={{width: '100%'}}>{defaultValues.id ? 'Update' : 'Send'}</Button>
           </div>
         </div>
       </div>
