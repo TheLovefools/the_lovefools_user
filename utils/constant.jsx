@@ -19,6 +19,7 @@ export const API_ENDPOINT = {
   GET_TABLE_LIST: "getTableList",
   GET_ALACARTE_LIST: "getAlaCarteMenu",
   ADD_RECEIPT: "addReceipt",
+  ADD_BOOKING_INITIATE_PAYMENT: "createBookingAndInitiatePayment",
   GET_UPCOMING_EVENT: "getUpComingEventList",
   ADD_ENQUIRY: "addEnquiry",
   PAYMENT_AUTH: "initiatePayment",
