@@ -65,12 +65,13 @@ const SelectMenuForm = ({
   const selectMenu = (data) => {
     setValue("price", data.price);
     setValue("id", data._id);
+    setValue("menu_id", data._id);
     setValue("menu_Name", data.menu_Name);
     setValue("menuType", data.menuType);
     setValue("subMenuType", data.subMenuType);
     setValue("photo", data.photo);
     // setSelectIndex(data.menu_Name);
-    console.log("selectMenu_", data);    
+    console.log("selectMenu_", data);
   };
 
   const onSubmit = (data) => {

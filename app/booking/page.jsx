@@ -26,6 +26,7 @@ const Page = () => {
     bookingSlot: null,
     time: null,
     price: "",
+    menu_id: null,
     menuType: '',
     subMenuType: '',
     quantity:'',
