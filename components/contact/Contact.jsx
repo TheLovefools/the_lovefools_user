@@ -130,7 +130,7 @@ const Contact = () => {
           <Grid item xs={12} sm={12} md={6} lg={6} className="google-map-col">
             <Box className="google-map">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d29997.5144180167!2d73.78490183476559!3d19.9795645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1726309757748!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.210872696463!2d72.833007!3d19.054463999999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c938a7dd9d6d%3A0xf4de48d35efe99ca!2sThe%20Lovefools!5e0!3m2!1sen!2sin!4v1750493782590!5m2!1sen!2sin"
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
