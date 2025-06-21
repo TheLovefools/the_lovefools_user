@@ -5,7 +5,7 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { Button, Typography, Container, Skeleton } from "@mui/material";
 import Image from "next/image";
-import Image2 from "../../assets/images/aboutUs.png";
+import Image2 from "../../assets/images/about-us-new.jpeg";
 import { AuthContextProvider } from "@/authcontext/AuthContext";
 import axios from "axios";
 import {
